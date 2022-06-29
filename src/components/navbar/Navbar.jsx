@@ -7,15 +7,16 @@ import FullscreenExitOutlinedIcon from '@mui/icons-material/FullscreenExitOutlin
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
 import ChatBubbleOutlinedIcon from '@mui/icons-material/ChatBubbleOutlined';
+
 const Navbar = () => {
   return (
     <div className="navbar">
       <div className="wrapper">
         <div className="search">
-          <input type="text" placeholder='Search...' />
+          <input type="text" placeholder='Поиск...' />
            <SearchIcon/>
         </div>
-        <div className="items">
+        {/* <div className="items">
           <div className="item">
             <LanguageOutlinedIcon className='icon'/>
             English
@@ -44,7 +45,7 @@ const Navbar = () => {
               className="avatar"
             />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

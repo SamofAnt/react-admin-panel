@@ -3,6 +3,7 @@ import Navbar from '../../components/navbar/Navbar'
 import Sidebar from '../../components/sidebar/Sidebar'
 import Table from '../../components/table/Table'
 import Widget from '../../components/widget/Widget'
+import Chart from '../../components/charts/Chart'
 import "./home.scss"
 
 export const Home = () => {
@@ -18,11 +19,12 @@ export const Home = () => {
           <Widget type="balance" />
         </div>
         <div className="charts">
-
+          <Chart title="Последние 6 месяцев" aspect={2 / 1} />
+          <Chart title="Последние 6 месяцев" aspect={2 / 1} />
         </div>
         <div className="listContainer">
-          <div className="listTitle">Latest Transactions</div>
-          <Table/>
+          <div className="listTitle">Статусы</div>
+          <Table />
         </div>
       </div>
     </div>

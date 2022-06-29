@@ -5,6 +5,9 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import SourceIcon from '@mui/icons-material/Source';
+import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
+import AccountTreeIcon from '@mui/icons-material/AccountTree';
 
 const Widget = ({ type }) => {
   let data;
@@ -16,11 +19,11 @@ const Widget = ({ type }) => {
   switch (type) {
     case "user":
       data = {
-        title: "USERS",
+        title: "ИСТОЧНИКИ",
         isMoney: false,
-        link: "See all users",
+        link: "Посмотреть все источники",
         icon: (
-          <PersonOutlinedIcon
+          <SourceIcon
             className="icon"
             style={{
               color: "crimson",
@@ -32,11 +35,11 @@ const Widget = ({ type }) => {
       break;
     case "order":
       data = {
-        title: "ORDERS",
+        title: "РЕСУРСЫ",
         isMoney: false,
-        link: "View all orders",
+        link: "Посмотреть все ресурсы",
         icon: (
-          <ShoppingCartOutlinedIcon
+          <AccountTreeIcon
             className="icon"
             style={{
               backgroundColor: "rgba(218, 165, 32, 0.2)",
@@ -48,11 +51,11 @@ const Widget = ({ type }) => {
       break;
     case "earning":
       data = {
-        title: "EARNINGS",
+        title: "ГРУППЫ РЕСУРСОВ",
         isMoney: true,
-        link: "View net earnings",
+        link: "Посмотреть все группы ресурсов",
         icon: (
-          <MonetizationOnOutlinedIcon
+          <CollectionsBookmarkIcon
             className="icon"
             style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
           />
@@ -61,9 +64,9 @@ const Widget = ({ type }) => {
       break;
     case "balance":
       data = {
-        title: "BALANCE",
+        title: "РЕЕСТРЫ",
         isMoney: true,
-        link: "See details",
+        link: "Посмотреть детали",
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"
@@ -84,14 +87,14 @@ const Widget = ({ type }) => {
       <div className="left">
         <span className="title">{data.title}</span>
         <span className="counter">
-          {data.isMoney && "$"} {amount}
+          {/* {data.isMoney && "$"}  */}
+          {amount}
         </span>
         <span className="link">{data.link}</span>
       </div>
       <div className="right">
         <div className="percentage positive">
-          <KeyboardArrowUpIcon />
-          {diff} %
+         
         </div>
         {data.icon}
       </div>

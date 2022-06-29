@@ -3,9 +3,12 @@ import "./sidebar.scss"
 import {
   Dashboard,
   PersonOutline,
+  Source,
   Inventory,
   CreditCard,
+  CollectionsBookmark,
   LocalShipping,
+  Info,
   QueryStats,
   NotificationsNone,
   HeartBroken,
@@ -14,6 +17,7 @@ import {
   Person,
   Logout
 } from '@mui/icons-material';
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -24,65 +28,69 @@ const Sidebar = () => {
       <hr />
       <div className="center">
         <ul>
-          <p className="title">MAIN</p>
+          <p className="title">ГЛАВНАЯ</p>
+          <Link to="/" style={{ textDecoration: "none" }}>
           <li>
             <Dashboard className='icon'/>
-            <span>Dashboard</span>
+            <span>Главная</span>
           </li>
-          <p className="title">LISTS</p>
+          </Link>
+          <p className="title">СПРАВОЧНИКИ</p>
+          <Link to="/sources" style={{ textDecoration: "none" }}>
           <li>
-          <PersonOutline className='icon'/>
-            <span>Users</span>
+          <Source className='icon'/>
+            <span>Источники</span>
           </li>
+          </Link>
           <li>
           <Inventory className='icon'/>
-            <span>Products</span>
+            <span>Ресурсы</span>
           </li>
           <li>
-          <CreditCard className='icon'/>
-            <span>Orders</span>
+          <CollectionsBookmark className='icon'/>
+            <span>Группы ресурсов </span>
           </li>
           <li>
-          <LocalShipping className='icon'/>
-            <span>Delivery</span>
+          <Info className='icon'/>
+            <span>Статусы</span>
           </li>
-          <p className="title">USEFUL</p>
+          <p className="title">ПОЛЕЗНОЕ</p>
           <li>
           <QueryStats className='icon'/>
-            <span>Stats</span>
+            <span>Статистика</span>
           </li>
           <li>
           <NotificationsNone className='icon'/>
-            <span>Notifications</span>
+            <span>Уведомления</span>
           </li>
-          <p className="title">SERVICE</p>
+          <p className="title">СЕРВИСЫ</p>
           <li>
           <HeartBroken className='icon'/>
-            <span>System Health</span>
+            <span>Состояние системы</span>
           </li>
           <li>
           <Psychology className='icon'/>
-            <span>Logs</span>
+            <span>Логи</span>
           </li>
           <li>
           <Settings className='icon'/>
-            <span>Settings</span>
+            <span>Настройки</span>
           </li>
-          <p className="title">USER</p>
+          <p className="title">ПОЛЬЗОВАТЕЛЬ</p>
           <li>
           <Person className='icon'/>
-            <span>Profile</span>
+            <span>Профиль</span>
           </li>
           <li>
           <Logout className='icon'/>
-            <span>Log out</span>
+            <span>Выход</span>
           </li>
         </ul>
       </div>
-      <div className="bottom">
+      {/* <div className="bottom">
         <div className="colorOption"></div>
         <div className="colorOption"></div>
-      </div>
+      </div> */}
     </div>
   )
 }
