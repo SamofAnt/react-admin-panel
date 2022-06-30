@@ -8,24 +8,29 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
+import { useTranslation } from "react-i18next";
+import "../../i18n"
 
-const data = [
-  { name: "Январь", Total: 1200 },
-  { name: "Февраль", Total: 2100 },
-  { name: "Март", Total: 800 },
-  { name: "Апрель", Total: 1600 },
-  { name: "Май", Total: 900 },
-  { name: "Июнь", Total: 1700 },
-];
+
 
 const Chart = ({ aspect, title }) => {
+
+  const { t } = useTranslation();
+  const data = [
+    { name: t("charts.months.jan"), Total: 1200 },
+    { name: t("charts.months.feb"), Total: 2100 },
+    { name: t("charts.months.mar"), Total: 800 },
+    { name: t("charts.months.apr"), Total: 1600 },
+    { name: t("charts.months.may"), Total: 900 },
+    { name: t("charts.months.jun"), Total: 1700 },
+  ];
   return (
     <div className="chart">
       {/* <div className="title">{title}</div> */}
       <ResponsiveContainer width="100%" aspect={aspect}>
         <AreaChart
           width={730}
-          height={250}
+          height={300}
           data={data}
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
         >

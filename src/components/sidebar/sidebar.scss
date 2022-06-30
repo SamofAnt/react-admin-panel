@@ -1,34 +1,36 @@
-.sidebar{
+.sidebar {
     flex: 1;
-    border-right: 0.5px solid rgb(230,227,227);
+    border-right: 0.5px solid rgb(230, 227, 227);
     min-height: 100vh;
     background-color: #fff;
-    .top{
+
+    .top {
         height: 50px;
         display: flex;
         align-items: center;
         justify-content: center;
 
-        .logo{
+        .logo {
             font-size: 20px;
             font-weight: bold;
             color: #6439ff;
         }
     }
-    hr{
+
+    hr {
         height: 0;
-        border: 0.5px solid rgb(230,227,227);
+        border: 0.5px solid rgb(230, 227, 227);
     }
 
-    .center{
+    .center {
         padding-left: 10px;
 
-        ul{
+        ul {
             list-style: none;
             margin: 0;
             padding: 0;
-            
-            .title{
+
+            .title {
                 font-size: 10px;
                 font-weight: bold;
                 color: #999;
@@ -36,22 +38,22 @@
                 margin-bottom: 5px;
             }
 
-            li{
+            li {
                 display: flex;
                 align-items: center;
                 padding: 5px;
                 cursor: pointer;
 
-                &:hover{
+                &:hover {
                     background-color: #ece8ff;
                 }
 
-                .icon{
+                .icon {
                     font-size: 18px;
                     color: #7451f8;
                 }
 
-                span{
+                span {
                     font-size: 13px;
                     font-weight: 600;
                     color: #888;
@@ -61,12 +63,58 @@
         }
     }
 
-    .bottom{
+    .bottom {
         display: flex;
         align-items: center;
         margin: 10px;
 
-        .colorOption{
+
+        .toggle {
+            position: relative;
+            display: block;
+            width: 40px;
+            height: 20px;
+            border-radius: 160px;
+            background: #222;
+            transition: 0.5s;
+            cursor: pointer;
+            box-shadow: inset 0 8px 60px rgba(0, 0, 0, 0.1),
+                inset 0 8px 8px rgba(0, 0, 0, 0.1),
+                inset 0 -4px 4px rgba(0, 0, 0, 0.1);
+
+            .indicator {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 20px;
+                height: 20px;
+                background: linear-gradient(to bottom, #444, #222);
+                border-radius: 50%;
+                transform: scale(0.9);
+                box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5),
+                    inset 0 4px 4px rgba(255, 255, 255, 0.2),
+                    inset 0 -4px 4px rgba(255, 255, 255, 0.2);
+                transition: 0.5s;
+               
+            }
+         
+        }
+        .toggle.active{
+            background: #fff;
+            box-shadow: inset 0 2px 60px rgba(0, 0, 0, 0.1)rgba(0, 0, 0, 0.1),
+                        inset 0 2px 8px rgba(0, 0, 0, 0.1)rgba(0, 0, 0, 0.1),
+                        inset 0 -4px 4px rgba(0, 0, 0, 0.05)rgba(0, 0, 0, 0.1);
+        }
+        .toggle.active .indicator{
+            left: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1),
+                        inset 0 4px 4px rgba(255, 255, 255, 1),
+                        inset 0 -4px 4px rgba(255, 255, 255, 1);
+            background: linear-gradient(to bottom, #eaeaea, #f9f9f9);
+
+        }
+
+        .colorOption {
             width: 20px;
             height: 20px;
             border-radius: 5px;
@@ -74,14 +122,14 @@
             cursor: pointer;
             margin: 5px;
 
-            &:nth-child(1){
+            &:nth-child(1) {
                 background-color: whitesmoke;
             }
-            
-            &:nth-child(2){
+
+            &:nth-child(2) {
                 background-color: #333;
             }
-            
+
         }
     }
 }

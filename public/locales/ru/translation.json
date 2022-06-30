@@ -1,0 +1,60 @@
+{
+    "search.label": "Поиск",
+    "widgets": {
+        "sources.label": "ИСТОЧНИКИ",
+        "resources.label": "РЕСУРСЫ",
+        "group.label": "ГРУППЫ РЕСУРСОВ",
+        "registers.label": "РЕГИСТРЫ"
+    },
+    "details": {
+        "sources.label": "Посмотреть все источники",
+        "resources.label": "Посмотреть все ресурсы",
+        "group.label": "Посмотреть все группы ресурсов",
+        "registers.label": "Посмотреть детали"
+    },
+    "charts" : {
+        "months": {
+            "jan": "Январь",
+            "feb": "Февраль",
+            "mar": "Март",
+            "apr": "Апрель",
+            "may": "Май",
+            "jun": "Июнь",
+            "jul": "Июль"
+        },
+        "index.label": "Количество"
+    },
+    "homeTable": {
+        "title": "Статусы"
+    },
+    "sidebar" : {
+        "main": "ГЛАВНАЯ",
+        "dashboard": "Главная",
+        "lists": "СПРАВОЧНИКИ",
+        "sources": "Источники",
+        "resources": "Ресурсы",
+        "groupResources": "Группа ресурсов",
+        "statuses": "Статусы",
+        "useful": "ПОЛЕЗНОЕ",
+        "stats": "Статистика",
+        "notifications":"Уведомления",
+        "services": "СЕРВИСЫ",
+        "systemHealth": "Состояние системы",
+        "logs": "Логи",
+        "settings": "Настройки",
+        "user": "ПОЛЬЗОВАТЕЛЬ",
+        "profile": "Профиль",
+        "exit":"Выход"
+    },
+    "actions":{
+        "view": "Подробнее",
+        "delete": "Удалить",
+        "add": "Добавить"
+    },
+    "datatables": {
+        "sources": "Источники",
+        "resources": "Ресурсы",
+        "groupResources": "Группа ресурсов",
+        "statuses": "Статусы"
+    }
+}

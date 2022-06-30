@@ -8,8 +8,12 @@ import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlin
 import SourceIcon from '@mui/icons-material/Source';
 import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
 import AccountTreeIcon from '@mui/icons-material/AccountTree';
+import { useTranslation } from "react-i18next";
+import "../../i18n"
+import { Link } from "react-router-dom";
 
 const Widget = ({ type }) => {
+  const { t } = useTranslation();
   let data;
 
   //temporary
@@ -19,9 +23,9 @@ const Widget = ({ type }) => {
   switch (type) {
     case "user":
       data = {
-        title: "ИСТОЧНИКИ",
+        title: t("widgets.sources.label"),
         isMoney: false,
-        link: "Посмотреть все источники",
+        link: t("details.sources.label"),
         icon: (
           <SourceIcon
             className="icon"
@@ -35,9 +39,9 @@ const Widget = ({ type }) => {
       break;
     case "order":
       data = {
-        title: "РЕСУРСЫ",
+        title: t("widgets.resources.label"),
         isMoney: false,
-        link: "Посмотреть все ресурсы",
+        link: t("details.resources.label"),
         icon: (
           <AccountTreeIcon
             className="icon"
@@ -51,9 +55,9 @@ const Widget = ({ type }) => {
       break;
     case "earning":
       data = {
-        title: "ГРУППЫ РЕСУРСОВ",
+        title: t("widgets.group.label"),
         isMoney: true,
-        link: "Посмотреть все группы ресурсов",
+        link: t("details.group.label"),
         icon: (
           <CollectionsBookmarkIcon
             className="icon"
@@ -64,9 +68,9 @@ const Widget = ({ type }) => {
       break;
     case "balance":
       data = {
-        title: "РЕЕСТРЫ",
+        title: t("widgets.registers.label"),
         isMoney: true,
-        link: "Посмотреть детали",
+        link: t("details.registers.label"),
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"
@@ -90,7 +94,9 @@ const Widget = ({ type }) => {
           {/* {data.isMoney && "$"}  */}
           {amount}
         </span>
+        <Link to="/sources" style={{ textDecoration: "none" }}>
         <span className="link">{data.link}</span>
+        </Link>
       </div>
       <div className="right">
         <div className="percentage positive">

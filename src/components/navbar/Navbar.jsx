@@ -1,28 +1,51 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import "./navbar.scss"
 import SearchIcon from '@mui/icons-material/Search';
-import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+import TranslateIcon from '@mui/icons-material/Translate';
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 import FullscreenExitOutlinedIcon from '@mui/icons-material/FullscreenExitOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import ListOutlinedIcon from '@mui/icons-material/ListOutlined';
 import ChatBubbleOutlinedIcon from '@mui/icons-material/ChatBubbleOutlined';
+import { DarkModeContext } from '../../context/darkModeContext';
+import { useTranslation } from "react-i18next";
+import "../../i18n"
 
 const Navbar = () => {
+  const {dispatch} = useContext(DarkModeContext)
+  const { t, i18n } = useTranslation();
+  const [lang, setLang] = useState(() => 
+    localStorage.getItem("lang")
+  )
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+    localStorage.setItem("lang", lang);
+  };
+
   return (
     <div className="navbar">
       <div className="wrapper">
         <div className="search">
-          <input type="text" placeholder='Поиск...' />
+          <input type="text" placeholder={t("search.label")} />
            <SearchIcon/>
         </div>
-        {/* <div className="items">
-          <div className="item">
-            <LanguageOutlinedIcon className='icon'/>
-            English
+        <div className="items">
+          <div className="item lang" onClick={() => {
+            if (lang==='ru'){
+              changeLanguage("en")
+              setLang("en")
+            }
+            else{
+              changeLanguage("ru")
+              setLang("ru")
+            }
+          }}>
+            {/* <LanguageOutlinedIcon className='icon'/> */}
+            <TranslateIcon className='icon lang'/>
+             { (lang === 'ru') ? "Русский" : "English"}
           </div>
           <div className="item">
-            <DarkModeOutlinedIcon className='icon'/>
+            <DarkModeOutlinedIcon className='icon' onClick={()=>dispatch({type:"TOGGLE"}) }/>
           </div>
           <div className="item">
             <FullscreenExitOutlinedIcon className='icon'/>
@@ -45,7 +68,7 @@ const Navbar = () => {
               className="avatar"
             />
           </div>
-        </div> */}
+        </div>
       </div>
     </div>
   )

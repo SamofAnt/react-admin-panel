@@ -1,0 +1,60 @@
+{
+    "search.label": "Search",
+    "widgets": {
+        "sources.label": "SOURCES",
+        "resources.label": "RESOURCES",
+        "group.label": "GROUP RESOURCES",
+        "registers.label": "REGISTERS"
+    },
+    "details": {
+        "sources.label": "See all sources",
+        "resources.label": "See all resources",
+        "group.label": "See all group resources",
+        "registers.label": "See details"
+    },
+    "charts" : {
+        "months": {
+            "jan": "January",
+            "feb": "February",
+            "mar": "March",
+            "apr": "April",
+            "may": "May",
+            "jun": "June",
+            "jul": "July"
+        },
+        "index.label": "count"
+    },
+    "homeTable": {
+        "title": "Statuses"
+    },
+    "sidebar" : {
+        "main": "MAIN",
+        "dashboard": "Dashboard",
+        "lists": "LISTS",
+        "sources": "Sources",
+        "resources": "Resources",
+        "groupResources": "Group resources",
+        "statuses": "Statuses",
+        "useful": "USEFUL",
+        "stats": "Stats",
+        "notifications":"Notifications",
+        "services": "SERVICES",
+        "systemHealth": "System Health",
+        "logs": "Logs",
+        "settings": "Settings",
+        "user": "USER",
+        "profile": "Profile",
+        "exit":"Log out"
+    },
+    "actions":{
+        "view": "View",
+        "delete": "Delete",
+        "add": "Add new"
+    },
+    "datatables": {
+        "sources": "Sources",
+        "resources": "Resources",
+        "groupResources": "Group resources",
+        "statuses": "Statuses"
+    }
+}
