@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./table.scss"
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -7,9 +7,18 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import SystemSourceService from '../../services/SystemSourceService';
 
 
 const List = () => {
+  const [sources, setSources] = useState([]);
+
+  useEffect(() => {
+    SystemSourceService.getSources().then((response) => {
+      setSources({sources: response.data})
+    })
+  })
+  
   const rows = [
     {
       id: 1143155,
