@@ -95,7 +95,7 @@ const Widget = ({ type }) => {
           {amount}
         </span>
         <Link to="/sources" style={{ textDecoration: "none" }}>
-        <span className="link">{data.link}</span>
+        <span className="link" style={{ textDecoration: "none" }}>{data.link}</span>
         </Link>
       </div>
       <div className="right">
