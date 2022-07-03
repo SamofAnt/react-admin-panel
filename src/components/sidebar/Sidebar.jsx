@@ -21,6 +21,7 @@ import { Link } from "react-router-dom";
 import { DarkModeContext } from '../../context/darkModeContext';
 import { useTranslation } from "react-i18next";
 import "../../i18n"
+import React from 'react'
 
 const Sidebar = () => {
   const { t } = useTranslation();
@@ -40,7 +41,9 @@ const Sidebar = () => {
   return (
     <div className='sidebar'>
       <div className="top">
+      <Link to="/" style={{ textDecoration: "none" }}>
         <span className="logo">Admin Panel</span>
+      </Link>
       </div>
       <hr />
       <div className="center">

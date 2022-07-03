@@ -2,6 +2,7 @@ import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Resp
 import "./steppedChart.scss"
 import { useTranslation } from "react-i18next";
 import "../../i18n"
+import React from 'react'
 
 export const SteppedChart = () =>{
   const { t } = useTranslation();
@@ -45,13 +46,12 @@ export const SteppedChart = () =>{
     return (
       <div className="chart">
         <BarChart
-          width={730}
-          height={350 }
+          width={600}
+          height={400 }
           data={data}
           margin={{
             top: 5,
-            right: 30,
-            left: 20,
+            left: 10,
             bottom: 5,
           }}
         >

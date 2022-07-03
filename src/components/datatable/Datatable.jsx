@@ -1,17 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./datatable.scss"
 import { DataGrid } from '@mui/x-data-grid';
-import { columns, rows } from '../../datatablesource';
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "../../i18n"
+import SystemSourceService from '../../services/SystemSourceService';
+import {columns} from "../../datatablesource"
 
 const Datatable = (props) => {
     const { t } = useTranslation();
+    const [sources, setSources] = useState([]);
+
+    useEffect(() => {
+        getSources()
+      }, [])
+      
+      const getSources = () => {
+        SystemSourceService.getSources().then((response) => {
+          setSources(response.data._embedded.sourceSystemList)
+          console.log(response.data._embedded.sourceSystemList)
+        });
+      }
     const actionColumn = [
         {
             field: "action",
-            headerName: "Action",
+            headerName: "Действия",
             width: 200,
             renderCell: (params) => {
                 return (
@@ -37,8 +50,9 @@ const Datatable = (props) => {
             </div>
             <DataGrid
                 className="datagrid"
-                rows={rows}
+                rows={sources}
                 columns={columns.concat(actionColumn)}
+                getRowId={(row) => row.sourceSystemCd}
                 pageSize={9}
                 rowsPerPageOptions={[9]}
                 checkboxSelection

@@ -14,11 +14,15 @@ const List = () => {
   const [sources, setSources] = useState([]);
 
   useEffect(() => {
-    SystemSourceService.getSources().then((response) => {
-      setSources({sources: response.data})
-    })
-  })
+    getSources()
+  }, [])
   
+  const getSources = () => {
+    SystemSourceService.getSources().then((response) => {
+      setSources(response.data._embedded.sourceSystemList)
+      console.log(response.data._embedded.sourceSystemList)
+    });
+  }
   const rows = [
     {
       id: 1143155,
@@ -54,30 +58,13 @@ const List = () => {
       <TableHead>
         <TableRow>
           <TableCell className="tableCell"> ID</TableCell>
-          <TableCell className="tableCell">Тест</TableCell>
-          <TableCell className="tableCell">Тест</TableCell>
-          <TableCell className="tableCell">Тест</TableCell>
-          <TableCell className="tableCell">Тест</TableCell>
-          <TableCell className="tableCell">Тест</TableCell>
-          <TableCell className="tableCell">Тест</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
-        {rows.map((row) => (
-          <TableRow key={row.id}>
-            <TableCell className="tableCell">{row.id}</TableCell>
-            <TableCell className="tableCell">
-              <div className="cellWrapper">
-                {row.product}
-              </div>
-            </TableCell>
-            <TableCell className="tableCell">{row.customer}</TableCell>
-            <TableCell className="tableCell">{row.date}</TableCell>
-            <TableCell className="tableCell">{row.method}</TableCell>
-            <TableCell className="tableCell">{row.method}</TableCell>
-            <TableCell className="tableCell">
-              <span className={`status ${row.status}`}>{row.status}</span>
-            </TableCell>
+        {sources.map((row) => (
+          <TableRow key={row.Test}>
+            <TableCell className="tableCell">{row.languageCd}</TableCell>
+          
           </TableRow>
         ))}
       </TableBody>

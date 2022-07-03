@@ -11,6 +11,7 @@ import { DarkModeContext } from '../../context/darkModeContext';
 import { useTranslation } from "react-i18next";
 import "../../i18n"
 
+import { Link } from "react-router-dom";
 const Navbar = () => {
   const {dispatch} = useContext(DarkModeContext)
   const { t, i18n } = useTranslation();
@@ -47,27 +48,27 @@ const Navbar = () => {
           <div className="item">
             <DarkModeOutlinedIcon className='icon' onClick={()=>dispatch({type:"TOGGLE"}) }/>
           </div>
-          <div className="item">
+          {/* <div className="item">
             <FullscreenExitOutlinedIcon className='icon'/>
-          </div>
+          </div> */}
           <div className="item">
             <NotificationsNoneOutlinedIcon className="icon" />
             <div className="counter">1</div>
           </div>
-          <div className="item">
+          {/* <div className="item">
             <ChatBubbleOutlinedIcon className="icon" />
             <div className="counter">2</div>
-          </div>
-          <div className="item">
+          </div> */}
+          {/* <div className="item">
             <ListOutlinedIcon className="icon" />
-          </div>
-          <div className="item">
+          </div> */}
+          {/* <div className="item">
             <img
               src="https://rut-miit.ru/content/e1038704.jpg?id_fe=1038704&hs=74580E778919341780B971AB6F585F7DA120EC71"
               alt=""
               className="avatar"
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
