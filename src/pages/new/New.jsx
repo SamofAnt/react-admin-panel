@@ -7,43 +7,34 @@ import React from 'react'
 import { Store } from 'react-notifications-component';
 import axios from 'axios';
 import SystemSourceService from "../../services/SystemSourceService";
+import { useForm } from "react-hook-form";
 
 const New = ({ inputs, titleNew }) => {
-  const [title, setTitle] = useState('');
-  const [body, setBody] = useState('');
   const [sources, setSources] = useState([]);
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
-
- const handleSubmit =  () => {
-     axios
-      .post('https://webhook.site/81f23ae1-cf64-4775-853b-a00d8e8ff29e/sources',[ {
-        title: "Test",
-      }])
-      .then((response) => {
-        setSources([response.data, ...sources]);
-        console.log(response.data)
+  const onSubmit = data => {
+    console.log(data);
+    axios.post('https://webhook.site/81f23ae1-cf64-4775-853b-a00d8e8ff29e/sources', data,
+      {
+        headers: [
+          { "Access-Control-Allow-Origin": '*' },
+          { "Access-Control-Allow-Headers": 'Origin, X-Requested-With, Content-Type, Accept ' },
+          { "Access-Control-Allow-Methods": "POST, GET, PUT, OPTIONS, DELETE" },
+          { "Access-Control-Max-Age": 3600 },
+          { 'Content-Type': 'application/json' }
+        ]
+      })
+      .then(response => {
+        console.log(response.data);
+        createNotification('success');
+      })
+      .catch(error => { 
+        console.log(error.data);
+        createNotification('error');
       });
-    setTitle('');
-    setBody('');
   };
-  useEffect(() => {
-    // POST request using axios inside useEffect React hook
-    const article =[ { title: "Test", }];
-    axios.post('https://webhook.site/81f23ae1-cf64-4775-853b-a00d8e8ff29e/sources', article,
-    {
-      headers: [
-        { "Access-Control-Allow-Origin": '*' },
-        { "Access-Control-Allow-Headers": 'Origin, X-Requested-With, Content-Type, Accept '},
-        { "Access-Control-Allow-Methods": "POST, GET, PUT, OPTIONS, DELETE" },
-        { "Access-Control-Max-Age": 3600 }
-      ]
-    })
-    .then((response)=>{
-      console.log(response.data)
-    })
 
-// empty dependency array means this effect will only run once (like componentDidMount in classes)
-}, []);
   const createNotification = (type) => {
     switch (type) {
 
@@ -91,24 +82,41 @@ const New = ({ inputs, titleNew }) => {
         <div className="bottom">
 
           <div className="right">
-            <form onSubmit={handleSubmit}>
-              {inputs.map((input) => (
-                <div className="formInput" key={input.id}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              {/* {inputs.map((input) => {
+                const name = input.label;
+                return (<div className="formInput" key={input.id}>
                   <label>{input.label}</label>
-                  <input type={input.type} placeholder={input.placeholder} />
-                </div>
-              ))}
-              <button type="submit" onClick={() => {
-                createNotification('success');
-              }}>
-                Добавить
-              </button>
+                  <input type={input.type} placeholder={input.placeholder} {...register(name, input.rules)} />
+                  {errors.name && (<p>{input.error}</p>)}
+                </div>)
+              })} */}
+              <div className="formInput">
+                <label>source_system_cd</label>
+                <input type="text" placeholder="SRC" {...register("source_system_cd", {required:true, maxLength: 3, minLength: 1})} />
+                {errors.source_system_cd &&  (<p>Должно быть отлично от 0 и менее трех символов</p>)}
+              </div>
+              <div className="formInput">
+                <label>language_cd</label>
+                <input type="text" placeholder="РУС" {...register("language_cd", {required:true, maxLength: 3})} />
+                {errors.language_cd && (<p>Должно быть отлично от 0 и менее трех символов</p>)}
+              </div>
+              <div className="formInput">
+                <label>source_system_desc</label>
+                <input type="text" placeholder="Тестовый источник" {...register("source_system_desc", {required:true})} />
+                {errors.source_system_desc && (<p>Поле должно быть заполнено</p>)}
+              </div>
+              <div className="formInput">
+                <label>x_source_no</label>
+                <input type="number" placeholder="1" {...register("x_source_no", {required:true, min: 0, max: 199})} />
+                {errors.x_source_no && (<p>Номер должен быть в диапозоне [0,199]</p>)}
+              </div>
+              <input className="btn" type="submit" />
             </form>
-
           </div>
         </div>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 
