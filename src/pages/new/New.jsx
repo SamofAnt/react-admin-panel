@@ -83,36 +83,16 @@ const New = ({ inputs, titleNew }) => {
 
           <div className="right">
             <form onSubmit={handleSubmit(onSubmit)}>
-              {/* {inputs.map((input) => {
+              {inputs.map((input) => {
                 const name = input.label;
                 return (<div className="formInput" key={input.id}>
                   <label>{input.label}</label>
                   <input type={input.type} placeholder={input.placeholder} {...register(name, input.rules)} />
-                  {errors.name && (<p>{input.error}</p>)}
+                  {errors[name] && (<p>{errors[name]?.message}</p>)}
                 </div>)
-              })} */}
-              <div className="formInput">
-                <label>source_system_cd</label>
-                <input type="text" placeholder="SRC" {...register("source_system_cd", {required:true, maxLength: 3, minLength: 1})} />
-                {errors.source_system_cd &&  (<p>Должно быть отлично от 0 и менее трех символов</p>)}
-              </div>
-              <div className="formInput">
-                <label>language_cd</label>
-                <input type="text" placeholder="РУС" {...register("language_cd", {required:true, maxLength: 3})} />
-                {errors.language_cd && (<p>Должно быть отлично от 0 и менее трех символов</p>)}
-              </div>
-              <div className="formInput">
-                <label>source_system_desc</label>
-                <input type="text" placeholder="Тестовый источник" {...register("source_system_desc", {required:true})} />
-                {errors.source_system_desc && (<p>Поле должно быть заполнено</p>)}
-              </div>
-              <div className="formInput">
-                <label>x_source_no</label>
-                <input type="number" placeholder="1" {...register("x_source_no", {required:true, min: 0, max: 199})} />
-                {errors.x_source_no && (<p>Номер должен быть в диапозоне [0,199]</p>)}
-              </div>
-              <input className="btn" type="submit" />
+              })}
             </form>
+            <button onClick={handleSubmit(onSubmit)} className="btn">Отправить</button>
           </div>
         </div>
       </div >
