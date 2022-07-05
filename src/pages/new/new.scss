@@ -55,22 +55,31 @@
                             border: none;
                             border-bottom: 1px solid gray;
                         }
+                        p {
+                            color: #bf1650;
+                          }
+                          
+                          p::before {
+                            display: inline;
+                            content: "⚠ ";
+                          }
                     }
-                   
-                   
-                }
-                button {
-                    display: block;
-                    
-                    width: 150px;
-                    padding: 10px;
-                    border: none;
-                    background-color: teal;
-                    color: white;
-                    font-weight: bold;
+                   input{
                     cursor: pointer;
-                    margin-top: 30px;
+                   }
+                    .btn {
+                        display: block;
+                        width: 150px;
+                        padding: 10px;
+                        border: none;
+                        background-color: teal;
+                        color: white;
+                        font-weight: bold;
+                        cursor: pointer;
+                        margin-top: 10px;
+                    }
                 }
+                
             }
         }
     }
