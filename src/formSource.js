@@ -1,7 +1,7 @@
 export const sourceInputs = [
     {
         id: 1,
-        label: "source_system_cd",
+        label: "sourceSystemCd",
         type: "text",
         placeholder: "SRC",
         rules: {
@@ -14,7 +14,7 @@ export const sourceInputs = [
     },
     {
         id: 2,
-        label: "valid_from_dttm",
+        label: "validFromDttm",
         type: "datetime-local",
         placeholder: 1,
         rules: {
@@ -23,7 +23,7 @@ export const sourceInputs = [
     },
     {
         id: 3,
-        label: "language_cd",
+        label: "languageCd",
         type: "text",
         placeholder: "РУС",
         rules: {
@@ -36,7 +36,7 @@ export const sourceInputs = [
     },
     {
         id: 4,
-        label: "valid_to_dttm",
+        label: "validToDttm",
         type: "datetime-local",
         placeholder: 1,
         rules: {
@@ -45,17 +45,16 @@ export const sourceInputs = [
     },
     {
         id: 5,
-        label: "source_system_desc",
+        label: "sourceSystemDesc",
         type: "text",
         placeholder: "Тестовый источник",
-        
         rules: {
             required: "Поле должно быть заполнено",
         }
     },
     {
         id: 6,
-        label: "x_source_no",
+        label: "sourceSystemNo",
         type: "number",
         placeholder: 1,
         rules: {
