@@ -4,7 +4,7 @@
 
     .newContainer {
         flex: 6;
-
+        position: relative;
         .top,
         .bottom {
             -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
@@ -55,20 +55,23 @@
                             border: none;
                             border-bottom: 1px solid gray;
                         }
+
                         p {
                             color: #bf1650;
-                          }
-                          
-                          p::before {
+                        }
+
+                        p::before {
                             display: inline;
                             content: "⚠ ";
-                          }
+                        }
                     }
-                   input{
-                    cursor: pointer;
-                   }
-                    
+
+                    input {
+                        cursor: pointer;
+                    }
+
                 }
+
                 .btn {
                     display: block;
                     width: 150px;
@@ -81,6 +84,18 @@
                     margin-top: 30px;
                 }
             }
+
+           
+        }
+        .loader {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
         }
     }
 }

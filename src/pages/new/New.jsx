@@ -8,28 +8,23 @@ import { Store } from 'react-notifications-component';
 import axios from 'axios';
 import SystemSourceService from "../../services/SystemSourceService";
 import { useForm } from "react-hook-form";
+import { Watch } from 'react-loader-spinner'
 
 const New = ({ inputs, titleNew }) => {
   const [sources, setSources] = useState([]);
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = data => {
     console.log(data);
-    axios.post('https://webhook.site/81f23ae1-cf64-4775-853b-a00d8e8ff29e/sources', data,
-      {
-        headers: [
-          { "Access-Control-Allow-Origin": '*' },
-          { "Access-Control-Allow-Headers": 'Origin, X-Requested-With, Content-Type, Accept ' },
-          { "Access-Control-Allow-Methods": "POST, GET, PUT, OPTIONS, DELETE" },
-          { "Access-Control-Max-Age": 3600 },
-          { 'Content-Type': 'application/json' }
-        ]
-      })
+    setLoading(true);
+    SystemSourceService.addSource(data)
       .then(response => {
         console.log(response.data);
         createNotification('success');
+        setLoading(false);
       })
-      .catch(error => { 
+      .catch(error => {
         console.log(error.data);
         createNotification('error');
       });
@@ -80,20 +75,27 @@ const New = ({ inputs, titleNew }) => {
           <h1>{titleNew}</h1>
         </div>
         <div className="bottom">
-
-          <div className="right">
-            <form onSubmit={handleSubmit(onSubmit)}>
-              {inputs.map((input) => {
-                const name = input.label;
-                return (<div className="formInput" key={input.id}>
-                  <label>{input.label}</label>
-                  <input type={input.type} placeholder={input.placeholder} {...register(name, input.rules)} />
-                  {errors[name] && (<p>{errors[name]?.message}</p>)}
-                </div>)
-              })}
-            </form>
-            <button onClick={handleSubmit(onSubmit)} className="btn">Отправить</button>
-          </div>
+          {!loading ? (
+            <div className="right">
+              <form onSubmit={handleSubmit(onSubmit)}>
+                {inputs.map((input) => {
+                  const name = input.label;
+                  return (<div className="formInput" key={input.id}>
+                    <label>{input.label}</label>
+                    <input type={input.type} placeholder={input.placeholder} {...register(name, input.rules)} />
+                    {errors[name] && (<p>{errors[name]?.message}</p>)}
+                  </div>)
+                })}
+              </form>
+              <button onClick={handleSubmit(onSubmit)} className="btn">Отправить</button>
+            </div>
+          ) : <div className="loader">
+            <Watch 
+              height={50}
+              width={50}
+              color='#6439ff'
+            />
+          </div>}
         </div>
       </div >
     </div >
