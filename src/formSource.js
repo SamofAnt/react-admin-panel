@@ -1,7 +1,8 @@
 export const sourceInputs = [
     {
         id: 1,
-        label: "sourceSystemCd",
+        label: "Код ресурса",
+        register: "sourceSystemCd",
         type: "text",
         placeholder: "SRC",
         rules: {
@@ -14,7 +15,8 @@ export const sourceInputs = [
     },
     {
         id: 2,
-        label: "validFromDttm",
+        label: "Начальное время достоверности",
+        register: "validFromDttm",
         type: "datetime-local",
         placeholder: 1,
         rules: {
@@ -23,7 +25,8 @@ export const sourceInputs = [
     },
     {
         id: 3,
-        label: "languageCd",
+        label: "Языковой код",
+        register: "languageCd",
         type: "text",
         placeholder: "РУС",
         rules: {
@@ -36,7 +39,8 @@ export const sourceInputs = [
     },
     {
         id: 4,
-        label: "validToDttm",
+        label: "Конечное время достоверности",
+        register: "validToDttm",
         type: "datetime-local",
         placeholder: 1,
         rules: {
@@ -45,7 +49,8 @@ export const sourceInputs = [
     },
     {
         id: 5,
-        label: "sourceSystemDesc",
+        register: "sourceSystemDesc",
+        label: "Описание ресурса",
         type: "text",
         placeholder: "Тестовый источник",
         rules: {
@@ -54,7 +59,8 @@ export const sourceInputs = [
     },
     {
         id: 6,
-        label: "sourceSystemNo",
+        label: "Номер ресурса",
+        register: "sourceSystemNo",
         type: "number",
         placeholder: 1,
         rules: {

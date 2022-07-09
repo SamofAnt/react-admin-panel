@@ -74,12 +74,12 @@ const New = ({ inputs, titleNew }) => {
         <div className="top">
           <h1>{titleNew}</h1>
         </div>
-        <div className="bottom">
-          {!loading ? (
+        {!loading ? (
+          <div className="bottom">
             <div className="right">
               <form onSubmit={handleSubmit(onSubmit)}>
                 {inputs.map((input) => {
-                  const name = input.label;
+                  const name = input.register;
                   return (<div className="formInput" key={input.id}>
                     <label>{input.label}</label>
                     <input type={input.type} placeholder={input.placeholder} {...register(name, input.rules)} />
@@ -89,14 +89,15 @@ const New = ({ inputs, titleNew }) => {
               </form>
               <button onClick={handleSubmit(onSubmit)} className="btn">Отправить</button>
             </div>
-          ) : <div className="loader">
-            <Watch 
-              height={50}
-              width={50}
-              color='#6439ff'
-            />
-          </div>}
-        </div>
+
+          </div>
+        ) : <div className="loader">
+          <Watch
+            height={50}
+            width={50}
+            color='#6439ff'
+          />
+        </div>}
       </div >
     </div >
   );

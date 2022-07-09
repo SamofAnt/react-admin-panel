@@ -10,6 +10,23 @@
         align-items: center;
         justify-content: space-between;
     
+        .deleteAction{
+          display: inline;
+          text-decoration: none;
+          color: red;
+          font-size: 16px;
+          font-weight: 400;
+          border: 1px solid red;
+          padding: 5px;
+          border-radius: 5px;
+          cursor: pointer;
+          margin-right: 15px;
+          .deleteIcon{
+            position: relative;
+            top: 5px;
+            color: red;
+          }
+        }
         .link{
           text-decoration: none;
           color: green;
@@ -19,6 +36,11 @@
           padding: 5px;
           border-radius: 5px;
           cursor: pointer;
+          .addIcon{
+            position: relative;
+            color: green;
+            top:6px;
+          }
         }
       }
     
@@ -54,5 +76,15 @@
             cursor: pointer;
         }
     }
+    .loader {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+  }
 }
 
