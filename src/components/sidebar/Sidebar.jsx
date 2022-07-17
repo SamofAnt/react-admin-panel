@@ -9,6 +9,7 @@ import {
   CollectionsBookmark,
   LocalShipping,
   Info,
+  AppRegistrationOutlined,
   QueryStats,
   NotificationsNone,
   HeartBroken,
@@ -74,10 +75,16 @@ const Sidebar = () => {
             <span>{t("sidebar.groupResources")}</span>
           </li>
           </Link>
-          <Link to="/statuses" style={{ textDecoration: "none" }}>
+          <Link to="/resourcesx" style={{ textDecoration: "none" }}>
           <li>
             <Info className='icon' />
-            <span>{t("sidebar.statuses")}</span>
+            <span>{t("sidebar.resoucesx")}</span>
+          </li>
+          </Link>
+          <Link to="/registers" style={{ textDecoration: "none" }}>
+          <li>
+            <AppRegistrationOutlined className='icon' />
+            <span>{t("sidebar.registers")}</span>
           </li>
           </Link>
           <p className="title">{t("sidebar.useful")}</p>

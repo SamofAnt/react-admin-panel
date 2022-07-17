@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import "./datatable.scss"
 import { DataGrid, GridToolbar } from '@mui/x-data-grid';
 import LinearProgress from '@mui/material/LinearProgress';
@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "../../i18n"
 import SystemSourceService from '../../services/SystemSourceService';
-import { columns } from "../../datatablesource"
 import { localizedTextsMap } from "../../GridLocalization"
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import AddIcon from '@mui/icons-material/Add';
@@ -18,6 +17,13 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Slide from '@mui/material/Slide';
+import NotificationsService from '../../services/NotificationsService';
+import ResourceService from '../../services/ResourceService';
+import {
+    useLocation
+} from "react-router-dom";
+import GroupResourcesService from '../../services/GroupResourcesService';
+import RegistryService from '../../services/RegisterService';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -25,10 +31,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const Datatable = (props) => {
     const { t } = useTranslation();
-    const [sources, setSources] = useState([]);
-    const [selectedRows, setSelectedRows] = React.useState([]);
+    const [rows, setRows] = useState([]);
+    const [selectedRows, setSelectedRows] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
+    const location = useLocation()
+    const prevProps = useRef(location)
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -39,20 +47,37 @@ const Datatable = (props) => {
     };
 
     useEffect(() => {
-        getSources()
-    }, [])
+            try {
+                switch (props.rows) {
+                    case 'sources':
+                        SystemSourceService.getSources().then((response) => {
+                            setRows(response.data._embedded.sourceSystemList)
+                            console.log(response.data._embedded.sourceSystemList)
+                        })
+                        break;
+                    case 'resources':
+                        ResourceService.getResources().then((response) => {
+                            setRows(response.data._embedded.resourceList)
+                            console.log(response.data._embedded.resourceList)
+                        })
+                        break;
+                    case 'groups':
+                        GroupResourcesService.getGroups().then((response) => {
+                            setRows(response.data._embedded.resourceGroupList)
+                            console.log(response.data._embedded.resourceGroupList)
+                        })
+                        break;
+                    case 'registers':
+                        RegistryService.getRegisters().then((response) => {
+                            setRows(response.data._embedded.resourceRegistryList)
+                            console.log(response.data._embedded.resourceRegistryList)
+                        })
+                }
 
-    const getSources = () => {
-        try {
-            SystemSourceService.getSources().then((response) => {
-                setSources(response.data._embedded.sourceSystemList)
-                console.log(response.data._embedded.sourceSystemList)
-            });
-
-        } catch (e) {
-            console.log(e)
-        }
-    }
+            } catch (e) {
+                console.log(e)
+            }
+    }, [location])
 
     const deleteItems = () => {
         setLoading(true);
@@ -60,6 +85,7 @@ const Datatable = (props) => {
             .then(response => {
                 console.log(response.data);
                 setLoading(false);
+                NotificationsService.getNotification('success', 'Элементы удалены', "Выбранные вами элементы были успешно удалены")
             });
     }
     const actionColumn = [
@@ -73,7 +99,7 @@ const Datatable = (props) => {
 
                         <div className="view"> {t("actions.view")}</div>
                         <div
-                            className="delete">
+                            className="delete" onClick={handleClickOpen}>
                             {t("actions.delete")}
                         </div>
                     </div>
@@ -102,24 +128,24 @@ const Datatable = (props) => {
             {!loading ?
                 <DataGrid
                     className="datagrid"
-                    rows={sources}
+                    rows={rows}
                     showBorders={false}
                     components={{
                         Toolbar: GridToolbar,
                         LoadingOverlay: LinearProgress,
                     }}
                     loading=
-                    {!sources.length}
-                    columns={columns.concat(actionColumn)}
-                    getRowId={(row) => row.sourceSystemCd}
+                    {!rows.length}
+                    columns={props.columns.concat(actionColumn)}
+                    getRowId={(row) => row.sourceSystemCd || row.resourceId || row.resourceGroupCd || row.registryId}
                     pageSize={9}
                     rowsPerPageOptions={[9]}
                     checkboxSelection
                     localeText={localizedTextsMap}
                     onSelectionModelChange={(item) => {
                         const selectedIDs = new Set(item);
-                        const selectedRows = sources.filter((row) =>
-                            selectedIDs.has(row.sourceSystemCd));
+                        const selectedRows = rows.filter((row) =>
+                            selectedIDs.has(row.sourceSystemCd || row.resourceCd || row.resourceGroupCd || row.registryId));
                         setSelectedRows(selectedRows);
                         console.log(selectedRows);
                     }}
@@ -146,7 +172,7 @@ const Datatable = (props) => {
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClose}>Отмена</Button>
-                    <Button onClick={()=> {
+                    <Button onClick={() => {
                         deleteItems();
                         handleClose();
                     }}>Удалить</Button>

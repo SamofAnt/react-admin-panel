@@ -10,7 +10,7 @@ const List = (props) => {
     <Sidebar/>
     <div className="listContainer">
       <Navbar/>
-      <Datatable title={props.title} link={props.link}/>
+      <Datatable title={props.title} link={props.link} rows={props.rows} columns={props.columns}/>
     </div>
   </div>
   )

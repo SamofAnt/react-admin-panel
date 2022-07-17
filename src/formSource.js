@@ -1,7 +1,7 @@
 export const sourceInputs = [
     {
         id: 1,
-        label: "Код ресурса",
+        label: "Код источника",
         register: "sourceSystemCd",
         type: "text",
         placeholder: "SRC",
@@ -50,7 +50,7 @@ export const sourceInputs = [
     {
         id: 5,
         register: "sourceSystemDesc",
-        label: "Описание ресурса",
+        label: "Описание источника",
         type: "text",
         placeholder: "Тестовый источник",
         rules: {
@@ -59,7 +59,7 @@ export const sourceInputs = [
     },
     {
         id: 6,
-        label: "Номер ресурса",
+        label: "Номер источника",
         register: "sourceSystemNo",
         type: "number",
         placeholder: 1,
@@ -76,3 +76,113 @@ export const sourceInputs = [
         }
     },
 ];
+
+export const resourceInputs = [
+    {
+        id: 1,
+        label: "ID",
+        register: "resourceId",
+        type: "number",
+        placeholder: 1.0,
+        rules: {
+            required: "Поле должно быть заполнено",
+            min: {
+                value: 1,
+                message: "ID должен быть больше 0"
+            }
+        }
+    },
+    {
+        id: 2,
+        label: "Код ресурса",
+        register: "resourceCd",
+        type: "text",
+        placeholder: "SFX",
+        rules: {
+            required: "Поле должно быть заполнено",
+            maxLength: {
+                value: 3,
+                message: "Должно быть менее трех символов"
+            }
+        }
+    },
+    {
+        id: 3,
+        label: "Группа ресурса",
+        register: "resourceGroup",
+        type: "text",
+        placeholder: "LOG",
+        rules: {
+            required: "Поле должно быть заполнено",
+            maxLength: {
+                value: 3,
+                message: "Должно быть менее трех символов"
+            }
+        }
+    },
+    {
+        id: 4,
+        label: "Описание ресурса",
+        register: "resourceDesc",
+        type: "text",
+        placeholder: "OWQ",
+        rules: {
+            required: "Поле должно быть заполнено",
+            maxLength: {
+                value: 3,
+                message: "Должно быть менее трех символов"
+            }
+        }
+    }
+]
+
+export const groupInputs = [
+    {
+        id: 1,
+        label: "Код группы",
+        register: "resourceGroupCd",
+        type: "text",
+        placeholder: "UID",
+        rules: {
+            required: "Поле должно быть заполнено",
+            maxLength: {
+                value: 3,
+                message: "Должно быть менее трех символов"
+            }
+        }
+    },
+    {
+        id: 2,
+        label: "Код политики перезагрузки",
+        register: "reloadPolicyCd",
+        type: "text",
+        placeholder: "YAW",
+        rules: {
+            required: "Поле должно быть заполнено",
+            maxLength: {
+                value: 3,
+                message: "Должно быть менее трех символов"
+            }
+        }
+    },
+    {
+        id: 3,
+        label: "Флаг загрузки",
+        register: "extractFlag",
+        type: "text",
+        placeholder: "G",
+        rules: {
+            required: "Поле должно быть заполнено",
+        }
+    },
+    {
+        id: 4,
+        label: "ID модуля загрузки",
+        register: "loadModuleId",
+        type: "number",
+        placeholder: 1.0,
+        rules: {
+            required: "Поле должно быть заполнено",
+        }
+    }
+]

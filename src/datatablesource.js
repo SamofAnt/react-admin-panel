@@ -1,7 +1,7 @@
-export const columns = [
+export const sourceColumns = [
   { 
     field: 'sourceSystemCd', 
-    headerName: 'Код ресурса', 
+    headerName: 'Код источника', 
     width: 130 
   },
   { 
@@ -23,12 +23,12 @@ export const columns = [
   },
   {
     field: 'sourceSystemDesc',
-    headerName: 'Описание ресурса',
+    headerName: 'Описание источника',
     width: 160,
   },
   {
     field: 'sourceSystemNo',
-    headerName: 'Номер ресурса',
+    headerName: 'Номер источника',
     width: 160,
   },
   {
@@ -37,4 +37,80 @@ export const columns = [
     width: 220,
     type: 'date'
   }
+]
+
+export const resourcesColumns = [
+  {
+    field: 'resourceId',
+    headerName: 'ID',
+    width: 130
+  },
+  {
+    field: 'resourceCd',
+    headerName: 'Код ресурса',
+    width: 130
+  },
+  {
+    field: 'resourceGroup',
+    headerName: 'Группа ресурса',
+    width: 250
+  },
+  {
+    field: 'resourceDesc',
+    headerName: 'Описание ресурса',
+    width: 250
+  }
+]
+
+export const groupsColumns = [
+  {
+    field: 'resourceGroupCd',
+    headerName: 'Код группы ресурсов',
+    width: 200
+  },
+  {
+    field: 'reloadPolicyCd',
+    headerName: 'Код политики перезагрузки',
+    width: 230
+  },
+  {
+    field: 'extractFlag',
+    headerName: 'Флаг выгрузки',
+    width: 130
+  },
+  
+  {
+    field: 'loadModuleId',
+    headerName: 'Идентификатор модуля загрузки',
+    width: 250
+  },
+]
+
+export const registersColumns = [
+  {
+  field: 'registryId',
+  headerName: 'ID',
+  width: 200
+},
+{
+  field: 'versionId',
+  headerName: 'Версия',
+  width: 230
+},
+{
+  field: 'availableDttm',
+  headerName: 'Дата доступности',
+  width: 260
+},
+
+{
+  field: 'processedByJobId',
+  headerName: 'processedByJobId',
+  width: 250
+},
+{
+  field: 'statusCd',
+  headerName: 'Код статуса',
+  width: 250
+},
 ]

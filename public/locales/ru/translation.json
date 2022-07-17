@@ -34,7 +34,8 @@
         "sources": "Источники",
         "resources": "Ресурсы",
         "groupResources": "Группа ресурсов",
-        "statuses": "Статусы",
+        "registers": "Регистры",
+        "resoucesx": "Ресуры и источники",
         "useful": "ПОЛЕЗНОЕ",
         "stats": "Статистика",
         "notifications":"Уведомления",
@@ -55,6 +56,7 @@
         "sources": "Источники",
         "resources": "Ресурсы",
         "groupResources": "Группа ресурсов",
-        "statuses": "Статусы"
+        "registers": "Реестры",
+        "resourcesx": "Ресуры и источники"
     }
 }

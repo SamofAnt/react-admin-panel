@@ -34,7 +34,8 @@
         "sources": "Sources",
         "resources": "Resources",
         "groupResources": "Group resources",
-        "statuses": "Statuses",
+        "registers": "Registers",
+        "resoucesx": "Resources and sources",
         "useful": "USEFUL",
         "stats": "Stats",
         "notifications":"Notifications",
@@ -55,6 +56,7 @@
         "sources": "Sources",
         "resources": "Resources",
         "groupResources": "Group resources",
-        "statuses": "Statuses"
+        "registers": "Registries",
+        "resoucesx": "Resources and sources"
     }
 }
