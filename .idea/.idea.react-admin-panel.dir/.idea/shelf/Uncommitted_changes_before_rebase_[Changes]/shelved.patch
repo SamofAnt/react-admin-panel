@@ -1,0 +1,19 @@
+Index: src/pages/list/List.jsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React from 'react'\r\nimport Datatable from '../../components/datatable/Datatable'\r\nimport Navbar from '../../components/navbar/Navbar'\r\nimport Sidebar from '../../components/sidebar/Sidebar'\r\nimport \"./list.scss\"\r\n\r\nconst List = (props) => {\r\n  return (\r\n    <div className=\"list\">\r\n    <Sidebar/>\r\n    <div className=\"listContainer\">\r\n      <Navbar/>\r\n      <Datatable title={props.title} link={props.link} rows={props.rows} columns={props.columns}/>\r\n    </div>\r\n  </div>\r\n  )\r\n}\r\n\r\nexport default List
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/pages/list/List.jsx b/src/pages/list/List.jsx
+--- a/src/pages/list/List.jsx	(revision 69a48a817a7d9102feceb1cba35703aaade2f1c0)
++++ b/src/pages/list/List.jsx	(date 1658145100663)
+@@ -10,7 +10,7 @@
+     <Sidebar/>
+     <div className="listContainer">
+       <Navbar/>
+-      <Datatable title={props.title} link={props.link} rows={props.rows} columns={props.columns}/>
++      <Datatable title={props.title} link={props.link} list={props.list} columns={props.columns}/>
+     </div>
+   </div>
+   )
