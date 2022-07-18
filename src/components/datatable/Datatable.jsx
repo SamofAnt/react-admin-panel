@@ -49,7 +49,7 @@ const Datatable = (props) => {
 
     useEffect(() => {
             try {
-                ServerService.get().
+                ServerService.get(props.url).
                 then((response=> {
                     setRows(response.data._embedded[props.list])
                     console.log(response.data._embedded[props.list])

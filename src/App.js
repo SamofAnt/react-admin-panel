@@ -30,18 +30,18 @@ function App() {
           <Route path="/">
             <Route index element={<Home/>} />
             <Route path="sources" >
-              <Route index element={<List title={t("datatables.sources")} link="/sources/new" list="sourceSystemList" columns={sourceColumns}/>}/>
+              <Route index element={<List title={t("datatables.sources")} link="/sources/new" list="sourceSystemList" columns={sourceColumns} url="/api/sources"/> }/>
               <Route path=":sourceId" element={<Single/>}/>
               <Route  path="new"
                 element={<New inputs={sourceInputs} titleNew="Добавить новый источник" url="/api/sources"/>}/>
             </Route>
             <Route path="resources">
-              <Route index element={<List title={t("datatables.resources")} link="/resources/new" list="resourceList" columns={resourcesColumns}/>}/>
+              <Route index element={<List title={t("datatables.resources")} link="/resources/new" list="resourceList" columns={resourcesColumns}  url="/api/resources"/>}/>
               <Route path=":resourceId" element={<Single/>}/>
               <Route path="new" element={<New inputs={resourceInputs} titleNew="Добавить новый ресурс" url="/api/resources"/>}/>
             </Route>
             <Route path="group">
-              <Route index element={<List title={t("datatables.groupResources")} link="/group/new" list="resourceGroupList" columns={groupsColumns}/>}/>
+              <Route index element={<List title={t("datatables.groupResources")} link="/group/new" list="resourceGroupList" columns={groupsColumns} url="/api/resource-group"/>}/>
               <Route path=":groupId" element={<Single/>}/>
                               <Route path="new" element={<New inputs={groupInputs} titleNew="Добавить новую группу ресурсов" url="/api/resource-group" />}/>
             </Route>
