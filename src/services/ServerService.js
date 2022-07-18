@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const SOURCES_REST_API_URL = 'https://webhook.site/ef2b8eff-1788-4cc8-91c4-76c90aefbb94'
+const SOURCES_REST_API_URL = 'http://localhost:8080'
 
 class ServerService{
 

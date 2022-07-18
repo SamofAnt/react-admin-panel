@@ -28,9 +28,9 @@ const New = ({ inputs, titleNew, url }) => {
         NotificationService.getNotification('success', 'Добавлено', 'Новый элемент успешно добавлен')
         setLoading(false);
       })
-      .catch(error => {
-        console.log(error.data);
-        NotificationService.getNotification('error', 'Ошибка добавления', 'Новый элемент не был успешно добавлен')
+        .catch(error => {
+          console.log(error.response)
+        NotificationService.getNotification('error', 'Ошибка добавления', error.response.data.details)
         setLoading(false);
       });
   };
