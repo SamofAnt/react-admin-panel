@@ -24,6 +24,7 @@ import {
 } from "react-router-dom";
 import GroupResourcesService from '../../services/GroupResourcesService';
 import RegistryService from '../../services/RegisterService';
+import ServerService from '../../services/ServerService';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
@@ -48,40 +49,20 @@ const Datatable = (props) => {
 
     useEffect(() => {
             try {
-                switch (props.rows) {
-                    case 'sources':
-                        SystemSourceService.getSources().then((response) => {
-                            setRows(response.data._embedded.sourceSystemList)
-                            console.log(response.data._embedded.sourceSystemList)
-                        })
-                        break;
-                    case 'resources':
-                        ResourceService.getResources().then((response) => {
-                            setRows(response.data._embedded.resourceList)
-                            console.log(response.data._embedded.resourceList)
-                        })
-                        break;
-                    case 'groups':
-                        GroupResourcesService.getGroups().then((response) => {
-                            setRows(response.data._embedded.resourceGroupList)
-                            console.log(response.data._embedded.resourceGroupList)
-                        })
-                        break;
-                    case 'registers':
-                        RegistryService.getRegisters().then((response) => {
-                            setRows(response.data._embedded.resourceRegistryList)
-                            console.log(response.data._embedded.resourceRegistryList)
-                        })
-                }
+                ServerService.get().
+                then((response=> {
+                    setRows(response.data._embedded[props.list])
+                    console.log(response.data._embedded[props.list])
+                }))
 
             } catch (e) {
-                console.log(e)
+                console.log(e.response)
             }
     }, [location])
 
     const deleteItems = () => {
         setLoading(true);
-        SystemSourceService.deleteSources(JSON.stringify(selectedRows, null, 4))
+        ServerService.delete(JSON.stringify(selectedRows, null, 4))
             .then(response => {
                 console.log(response.data);
                 setLoading(false);
