@@ -110,7 +110,7 @@ export const resourceInputs = [
         id: 3,
         label: "Группа ресурса",
         register: "resourceGroup",
-        type: "text",
+        type: "selection",
         placeholder: "LOG",
         rules: {
             required: "Поле должно быть заполнено",

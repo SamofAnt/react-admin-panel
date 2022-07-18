@@ -33,12 +33,12 @@ function App() {
               <Route index element={<List title={t("datatables.sources")} link="/sources/new" rows="sources" columns={sourceColumns}/>}/>
               <Route path=":sourceId" element={<Single/>}/>
               <Route  path="new"
-                element={<New inputs={sourceInputs} titleNew="Добавить новый источник"/>}/>
+                element={<New inputs={sourceInputs} titleNew="Добавить новый источник" url="/api/sources"/>}/>
             </Route>
             <Route path="resources">
               <Route index element={<List title={t("datatables.resources")} link="/resources/new" rows="resources" columns={resourcesColumns}/>}/>
               <Route path=":resourceId" element={<Single/>}/>
-              <Route path="new" element={<New inputs={resourceInputs} titleNew="Добавить новый ресурс"/>}/>
+              <Route path="new" element={<New inputs={resourceInputs} titleNew="Добавить новый ресурс" url="/api/resources"/>}/>
             </Route>
             <Route path="group">
               <Route index element={<List title={t("datatables.groupResources")} link="/group/new" rows="groups" columns={groupsColumns}/>}/>
