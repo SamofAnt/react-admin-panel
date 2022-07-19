@@ -9,7 +9,7 @@ export const sourceInputs = [
             required: "Поле должно быть заполнено",
             maxLength: {
                 value: 3,
-                message: "Должно быть менее трех символов"
+                message: "Должно быть менее четырех символов"
             }
         }
     },
@@ -33,7 +33,7 @@ export const sourceInputs = [
             required: "Поле должно быть заполнено",
             maxLength: {
                 value: 3,
-                message: "Должно быть менее трех символов"
+                message: "Должно быть менее четырех символов"
             }
         }
     },
@@ -102,7 +102,7 @@ export const resourceInputs = [
             required: "Поле должно быть заполнено",
             maxLength: {
                 value: 3,
-                message: "Должно быть менее трех символов"
+                message: "Должно быть менее четырех символов"
             }
         }
     },
@@ -116,7 +116,7 @@ export const resourceInputs = [
             required: "Поле должно быть заполнено",
             maxLength: {
                 value: 3,
-                message: "Должно быть менее трех символов"
+                message: "Должно быть менее четырех символов"
             }
         }
     },
@@ -130,7 +130,7 @@ export const resourceInputs = [
             required: "Поле должно быть заполнено",
             maxLength: {
                 value: 3,
-                message: "Должно быть менее трех символов"
+                message: "Должно быть менее четырех символов"
             }
         }
     }
@@ -147,7 +147,7 @@ export const groupInputs = [
             required: "Поле должно быть заполнено",
             maxLength: {
                 value: 3,
-                message: "Должно быть менее трех символов"
+                message: "Должно быть менее четырех символов"
             }
         }
     },
@@ -161,7 +161,7 @@ export const groupInputs = [
             required: "Поле должно быть заполнено",
             maxLength: {
                 value: 3,
-                message: "Должно быть менее трех символов"
+                message: "Должно быть менее четырех символов"
             }
         }
     },
@@ -173,6 +173,10 @@ export const groupInputs = [
         placeholder: "G",
         rules: {
             required: "Поле должно быть заполнено",
+            maxLength: {
+                value: 1,
+                message: "Должно быть менее двух символов"
+            }
         }
     },
     {
