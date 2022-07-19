@@ -15,7 +15,7 @@ import ServerService from "../../services/ServerService";
 
 const New = ({ inputs, titleNew, url }) => {
   const [sources, setSources] = useState([]);
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, control, formState: { errors } } = useForm();
   const [loading, setLoading] = useState(false);
   const [groups, setGroups] = useState([]);
   const [loadingSelect, setSelectLoading] = useState(true);
@@ -85,16 +85,23 @@ const New = ({ inputs, titleNew, url }) => {
                   return (<div className="formInput" key={input.id}>
                     <label>{input.label}</label>
                     {(input.type == "selection") ? (
-                      <Select
-                        name="resourceGroupCd"
-                        isClearable
-                        placeholder='Search groups...'
-                        onChange={onChangeGroups}
-                        options={groups}
-                        value={groups.value}
-                        noOptionsMessage={() => 'No Groups Found'}
-                        isLoading={loadingSelect}
-                      />  
+                       <Controller
+                       control={control}
+                       name={name} 
+                       render={({field}) => (
+                       <Select
+                         isClearable
+                         placeholder='Выберите группу...'
+                         {...field}
+                         //onChange={(val) => onChange(val.value)}
+                         options={groups}
+                         //value={groups.find((g)=> g.value === value)}
+                         noOptionsMessage={() => 'Группы не найдено'}
+                         isSearchable
+                         isLoading={loadingSelect}
+                       />  )}
+                       rules={input.rules}
+                       />
                       
                       
                       // <select  onClick={onLoadGroups}  {...register(name, input.rules)}
