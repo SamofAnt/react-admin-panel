@@ -4,6 +4,8 @@ import Sidebar from '../../components/sidebar/Sidebar'
 import Table from '../../components/table/Table'
 import Widget from '../../components/widget/Widget'
 import Chart from '../../components/charts/Chart'
+
+import CircleChart from '../../components/charts/PieChart'
 import "./home.scss"
 import { SteppedChart } from '../../components/charts/SteppedChart'
 import { useTranslation } from "react-i18next";
@@ -19,17 +21,21 @@ export const Home = () => {
         <div className="homeContainer">
           <Navbar />
           <div className="widgets">
-            <Widget type="user" />
-            <Widget type="order" />
-            <Widget type="earning" />
-            <Widget type="balance" />
+            <Widget type="sources" url="/sources"/>
+            <Widget type="resources"  url="/resources"/>
+            <Widget type="group" url="/group"/>s
+            <Widget type="registers" url="/registers"/>
 
           </div>
           <div className="charts">
-            <SteppedChart />
-            <Chart title="Последние 6 месяцев" aspect={2 / 1} />
-
+          
+           <SteppedChart />
+            <CircleChart/>
+            <Chart aspect={2 / 1} className="chart"/>
+           
+           
           </div>
+         
           <div className="listContainer">
             <div className="listTitle">{t("homeTable.title")}</div>
             <Table />

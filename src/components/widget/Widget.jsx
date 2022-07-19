@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 import "../../i18n"
 import { Link } from "react-router-dom";
 
-const Widget = ({ type }) => {
+const Widget = ({ type, url }) => {
   const { t } = useTranslation();
   let data;
 
@@ -21,7 +21,7 @@ const Widget = ({ type }) => {
   const diff = 20;
 
   switch (type) {
-    case "user":
+    case "sources":
       data = {
         title: t("widgets.sources.label"),
         isMoney: false,
@@ -37,7 +37,7 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "order":
+    case "resources":
       data = {
         title: t("widgets.resources.label"),
         isMoney: false,
@@ -53,7 +53,7 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "earning":
+    case "group":
       data = {
         title: t("widgets.group.label"),
         isMoney: true,
@@ -66,7 +66,7 @@ const Widget = ({ type }) => {
         ),
       };
       break;
-    case "balance":
+    case "registers":
       data = {
         title: t("widgets.registers.label"),
         isMoney: true,
@@ -94,7 +94,7 @@ const Widget = ({ type }) => {
           {/* {data.isMoney && "$"}  */}
           {amount}
         </span>
-        <Link to="/sources" style={{ textDecoration: "none" }}>
+        <Link to={url} style={{ textDecoration: "none" }}>
         <span className="link" style={{ textDecoration: "none" }}>{data.link}</span>
         </Link>
       </div>
