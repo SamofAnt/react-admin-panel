@@ -20,8 +20,9 @@ const New = ({ inputs, titleNew, url }) => {
   const [groups, setGroups] = useState([]);
   const [loadingSelect, setSelectLoading] = useState(true);
 
-  const onSubmit = data => {
-    data.resourceGroup = data.resourceGroup.value
+    const onSubmit = data => {
+      if ('resourceCd' in data)
+        data.resourceGroup = data.resourceGroup.value
     console.log(data);
     setLoading(true);
     ServerService.add(data, url)
@@ -53,7 +54,7 @@ const New = ({ inputs, titleNew, url }) => {
   useEffect(() => {
     if (groups.length == 0) {
       try {
-         GroupResourcesService.getGroups()
+         ServerService.get('/api/resource-group')
           .then(response => {
             var groupsTitle = []
             response.data._embedded.resourceGroupList.map(group=> groupsTitle.push(new Object({value: group.resourceGroupCd, label : group.resourceGroupCd})))

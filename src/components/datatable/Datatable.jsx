@@ -48,26 +48,38 @@ const Datatable = (props) => {
     };
 
     useEffect(() => {
-            try {
-                ServerService.get(props.url).
-                then((response=> {
+       getItems()
+    }, [location])
+
+    const getItems = () => {
+        try {
+            ServerService.get(props.url).
+                then((response => {
                     setRows(response.data._embedded[props.list])
                     console.log(response.data._embedded[props.list])
                 }))
 
-            } catch (e) {
-                console.log(e.response)
-            }
-    }, [location])
-
+        } catch (e) {
+            console.log(e.response)
+        }
+    }
     const deleteItems = () => {
         setLoading(true);
-        ServerService.delete(JSON.stringify(selectedRows, null, 4))
-            .then(response => {
-                console.log(response.data);
-                setLoading(false);
-                NotificationsService.getNotification('success', 'Элементы удалены', "Выбранные вами элементы были успешно удалены")
-            });
+        console.log(selectedRows)
+        ServerService.delete(selectedRows, props.url.concat("/selected"))
+                .then(response => {
+                    console.log(response.data);
+                    setLoading(false);
+                    NotificationsService.getNotification('success', 'Элементы удалены', "Выбранные вами элементы были успешно удалены")
+                    getItems()
+                }).catch(error => {
+                    console.log(error)
+                    setLoading(false)
+                    NotificationsService.getNotification('error', 'Ошибка удаления', error.response.data.details)
+                    
+                });
+        
+
     }
     const actionColumn = [
         {
@@ -126,7 +138,7 @@ const Datatable = (props) => {
                     onSelectionModelChange={(item) => {
                         const selectedIDs = new Set(item);
                         const selectedRows = rows.filter((row) =>
-                            selectedIDs.has(row.sourceSystemCd || row.resourceCd || row.resourceGroupCd || row.registryId));
+                            selectedIDs.has(row.sourceSystemCd || row.resourceId || row.resourceGroupCd || row.registryId));
                         setSelectedRows(selectedRows);
                         console.log(selectedRows);
                     }}

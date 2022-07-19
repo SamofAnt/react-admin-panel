@@ -36,9 +36,9 @@ function App() {
                 element={<New inputs={sourceInputs} titleNew="Добавить новый источник" url="/api/sources"/>}/>
             </Route>
             <Route path="resources">
-              <Route index element={<List title={t("datatables.resources")} link="/resources/new" list="resourceList" columns={resourcesColumns}  url="/api/resources"/>}/>
+              <Route index element={<List title={t("datatables.resources")} link="/resources/new" list="resourceList" columns={resourcesColumns}  url="/api/resource"/>}/>
               <Route path=":resourceId" element={<Single/>}/>
-              <Route path="new" element={<New inputs={resourceInputs} titleNew="Добавить новый ресурс" url="/api/resources"/>}/>
+              <Route path="new" element={<New inputs={resourceInputs} titleNew="Добавить новый ресурс" url="/api/resource"/>}/>
             </Route>
             <Route path="group">
               <Route index element={<List title={t("datatables.groupResources")} link="/group/new" list="resourceGroupList" columns={groupsColumns} url="/api/resource-group"/>}/>
