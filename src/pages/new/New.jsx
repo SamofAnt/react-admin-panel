@@ -21,6 +21,7 @@ const New = ({ inputs, titleNew, url }) => {
   const [loadingSelect, setSelectLoading] = useState(true);
 
   const onSubmit = data => {
+    data.resourceGroup = data.resourceGroup.value
     console.log(data);
     setLoading(true);
     ServerService.add(data, url)
@@ -35,20 +36,20 @@ const New = ({ inputs, titleNew, url }) => {
       });
   };
 
-  const onChangeGroups = newGroups => {
-    setGroups(newGroups == null ? [] : newGroups);
-  }
-  const  onLoadGroups = async() => {
-    try {
-       await GroupResourcesService.getGroups()
-      .then(response => {
-        setGroups(response.data._embedded.resourceGroupList)
-        console.log(response.data._embedded.resourceGroupList)
-      })
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // const onChangeGroups = newGroups => {
+  //   setGroups(newGroups == null ? [] : newGroups);
+  // }
+  // const  onLoadGroups = async() => {
+  //   try {
+  //      await GroupResourcesService.getGroups()
+  //     .then(response => {
+  //       setGroups(response.data._embedded.resourceGroupList)
+  //       console.log(response.data._embedded.resourceGroupList)
+  //     })
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
   useEffect(() => {
     if (groups.length == 0) {
       try {
