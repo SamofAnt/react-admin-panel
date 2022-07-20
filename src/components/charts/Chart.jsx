@@ -26,7 +26,7 @@ const Chart = ({ title, aspect,  }) => {
   ];
   return (
     <div className="chart">
-       <div className="title"></div> 
+       <div className="title">{title}</div> 
         <AreaChart
           width={1000}
           height={400}

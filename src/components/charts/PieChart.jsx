@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 import "../../i18n"
 import React from 'react'
 
-import { PieChart, Pie,Legend, Sector, Cell } from 'recharts';
+import { PieChart, Pie, Legend, Sector, Cell } from 'recharts';
 
 //const test = [
 //  { name: 'Group A', value: 400 },
@@ -36,42 +36,42 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
   );
 };
 
-const CircleChart = ({ title, data}) => {
+const CircleChart = ({ title, data }) => {
 
   const { t } = useTranslation();
-  
+
   return (
     <div className="chart">
-       <div className="title">Общее количество статусов</div> 
-          <PieChart width={400} height={400}>
-              <Legend layout="vertical" verticalAlign="top" align="top" payload={
-                  data.map(
-                      (item, index) => ({
-                          id: item.nameOfStatus,
-                          type: "circle",
-                          value: `${item.nameOfStatus} (${item.countOfStatuses})`,
-                          color: COLORS[index % COLORS.length]
-                      })
-                  )
-              } />
-              <Pie
+      <div className="title">{title}</div>
+      <PieChart width={400} height={400}>
+        <Legend layout="vertical" verticalAlign="top" align="top" payload={
+          data.map(
+            (item, index) => ({
+              id: item.nameOfStatus,
+              type: "circle",
+              value: `Статус ${item.nameOfStatus[item.nameOfStatus.length - 1]} (${item.countOfStatuses})`,
+              color: COLORS[index % COLORS.length]
+            })
+          )
+        } />
+        <Pie
 
-                  data={data}
-            cx="50%"
-            cy="50%"
-            labelLine={false}
-            label={renderCustomizedLabel}
-            outerRadius={80}
-            fill="#8884d8"
-                  dataKey="countOfStatuses"
-                  
-          >
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-            ))}
-              </Pie>
+          data={data}
+          cx="50%"
+          cy="50%"
+          labelLine={false}
+          label={renderCustomizedLabel}
+          outerRadius={80}
+          fill="#8884d8"
+          dataKey="countOfStatuses"
 
-        </PieChart>
+        >
+          {data.map((entry, index) => (
+            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+          ))}
+        </Pie>
+
+      </PieChart>
     </div>
   );
 };
