@@ -227,7 +227,6 @@ export const resourceXInputs = [
         type: "text",
         placeholder: "ROL",
         rules: {
-            required: "Поле должно быть заполнено",
             maxLength: {
                 value: 10,
                 message: "Должно быть менее одиннадцати символов"
@@ -241,7 +240,6 @@ export const resourceXInputs = [
         type: "text",
         placeholder: "PR",
         rules: {
-            required: "Поле должно быть заполнено",
             maxLength: {
                 value: 8,
                 message: "Должно быть менее девяти символов"
@@ -255,7 +253,6 @@ export const resourceXInputs = [
         type: "text",
         placeholder: "PERVII",
         rules: {
-            required: "Поле должно быть заполнено",
             maxLength: {
                 value: 32,
                 message: "Должно быть менее 33 символов"
@@ -270,7 +267,6 @@ export const resourceXInputs = [
         type: "text",
         placeholder: "File",
         rules: {
-            required: "Поле должно быть заполнено",
             maxLength: {
                 value: 100,
                 message: "Должно быть менее 101 символа"
@@ -285,7 +281,6 @@ export const resourceXInputs = [
         type: "text",
         placeholder: "storedProcedure",
         rules: {
-            required: "Поле должно быть заполнено",
             maxLength: {
                 value: 100,
                 message: "Должно быть менее 101 символа"
