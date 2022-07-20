@@ -16,7 +16,8 @@ const Home = ({url }) => {
   const { t } = useTranslation();
     const [statusesInDay, setStatuses] = useState([]);
     const [countStatuses, setCount] = useState([]);
-  const [loading, setLoading] = useState(false);
+    const [countAll, setAll] = useState([]);
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
         if (statusesInDay.length === 0 || countStatuses === 0) {
             setLoading(true);
@@ -32,6 +33,14 @@ const Home = ({url }) => {
                 ServerService.get("/api/registry-chart-all")
                     .then((response) => {
                         setCount(response.data)
+                        console.log(response.data)
+                    })
+                    .catch(err => {
+                        console.log(err.response)
+                    })
+                ServerService.get("/api/all-data")
+                    .then((response) => {
+                        setAll(response.data)
                         console.log(response.data)
                     })
                     .catch(err => {
@@ -53,10 +62,10 @@ const Home = ({url }) => {
         {!loading ? (
           <div>
             <div className="widgets">
-              <Widget type="sources" url="/sources" />
-              <Widget type="resources" url="/resources" />
-              <Widget type="group" url="/group" />
-              <Widget type="registers" url="/registers" />
+                          <Widget type="sources" url="/sources" amount={countAll.map(item=>item.countOfSources)}/>
+                          <Widget type="resources" url="/resources" amount={countAll.map(item => item.countOfResources)} />
+                          <Widget type="group" url="/group" amount={countAll.map(item => item.countOfGroups)} />
+                          <Widget type="registers" url="/registers" amount={countAll.map(item => item.countOfRegistry)} />
 
             </div>
             <div className="charts">

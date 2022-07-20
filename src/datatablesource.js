@@ -88,7 +88,7 @@ export const groupsColumns = [
 
 export const registersColumns = [
   {
-  field: 'registryId',
+  field: 'registerId',
   headerName: 'ID',
   width: 200
 },
@@ -105,7 +105,7 @@ export const registersColumns = [
 
 {
   field: 'processedByJobId',
-  headerName: 'processedByJobId',
+  headerName: 'Код задания ресурса',
   width: 250
 },
 {

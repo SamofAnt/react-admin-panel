@@ -130,7 +130,7 @@ const Datatable = (props) => {
                     loading=
                     {!rows.length}
                     columns={props.columns.concat(actionColumn)}
-                    getRowId={(row) => row.sourceSystemCd || row.resourceId || row.resourceGroupCd || row.registryId}
+                    getRowId={(row) => (row.sourceSystemCd || row.resourceId || row.resourceGroupCd  || row.resourceCd || row.registerId)}
                     pageSize={9}
                     rowsPerPageOptions={[9]}
                     checkboxSelection
@@ -138,7 +138,7 @@ const Datatable = (props) => {
                     onSelectionModelChange={(item) => {
                         const selectedIDs = new Set(item);
                         const selectedRows = rows.filter((row) =>
-                            selectedIDs.has(row.sourceSystemCd || row.resourceId || row.resourceGroupCd || row.registryId));
+                            selectedIDs.has(row.sourceSystemCd || row.resourceId || row.resourceGroupCd  || row.resourceCd));
                         setSelectedRows(selectedRows);
                         console.log(selectedRows);
                     }}

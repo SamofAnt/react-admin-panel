@@ -50,8 +50,8 @@ function App() {
               <Route path=":registerId" element={<Single/>}/>
               <Route path="new" element={<New/>}/>
             </Route>
-            <Route path="resourcesx" >
-              <Route index element={<List title={t("datatables.resourcesx")} link="/resourcesx/new" list="resourceXSourceList" columns={registersColumns}/>}/>
+                          <Route path="resourcesx" >
+                              <Route index element={<List title={t("datatables.resourcesx")} link="/resourcesx/new" list="resourceXSourceList" columns={resourceXColumns} url="/api/resource-and-source" />} />
               <Route path=":resourcexId" element={<Single/>}/>
               <Route path="new" element={<New/>}/>
             </Route>
