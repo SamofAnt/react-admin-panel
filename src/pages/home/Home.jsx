@@ -14,45 +14,54 @@ import ServerService from '../../services/ServerService'
 
 const Home = ({ url }) => {
   const { t } = useTranslation();
-  const [statusesInDay, setStatuses] = useState([]);
-  const [countStatuses, setCount] = useState([]);
-  const [countAll, setAll] = useState([]);
-  const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    if (statusesInDay.length === 0 || countStatuses === 0) {
-      setLoading(true);
-      try {
-        ServerService.get(url)
-          .then((response) => {
-            setStatuses(response.data)
-            console.log(response.data)
-          })
-          .catch(err => {
-            console.log(err.response)
-          })
-        ServerService.get("/api/registry-chart-all")
-          .then((response) => {
-            setCount(response.data)
-            console.log(response.data)
-          })
-          .catch(err => {
-            console.log(err.response)
-          })
-        ServerService.get("/api/all-data")
-          .then((response) => {
-            setAll(response.data)
-            console.log(response.data)
-          })
-          .catch(err => {
-            console.log(err.response)
-          })
-        setLoading(false)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-  })
 
+    const [statusesInDay, setStatuses] = useState([]);
+    const [countStatuses, setCount] = useState([]);
+    const [countAll, setAll] = useState([]);
+    const [amount, setAmount] = useState([]);
+    const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        if (statusesInDay.length === 0 || countStatuses === 0) {
+            setLoading(true);
+            try {
+                ServerService.get(url)
+                    .then((response) => {
+                        setStatuses(response.data)
+                        console.log(response.data)
+                    })
+                    .catch(err => {
+                        console.log(err.response)
+                    })
+                ServerService.get("/api/registry-chart-all")
+                    .then((response) => {
+                        setCount(response.data)
+                        console.log(response.data)
+                    })
+                    .catch(err => {
+                        console.log(err.response)
+                    })
+                ServerService.get("/api/all-data")
+                    .then((response) => {
+                        setAll(response.data)
+                        console.log(response.data)
+                    })
+                    .catch(err => {
+                        console.log(err.response)
+                    })
+                ServerService.get("/api/statuses-by-date")
+                    .then((response) => {
+                        setAmount(response.data)
+                        console.log(response.data)
+                    })
+                    .catch(err => {
+                        console.log(err.response)
+                    })
+                setLoading(false)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    })
   return (
     <div className='home'>
 
@@ -70,10 +79,9 @@ const Home = ({ url }) => {
             </div>
             <div className="charts">
 
-              <SteppedChart data={statusesInDay} title="Статусы за последнюю неделю"/>
+<SteppedChart data={statusesInDay} title="Статусы за последнюю неделю"/>
               <CircleChart data={countStatuses} title="Общее количество статусов"/>
-              <Chart aspect={2 / 1} className="chart" title="Общее количество статусов за посление 5 дней"/>
-
+              <Chart data={amount}  aspect={2 / 1} className="chart" title="Общее количество статусов за посление 5 дней"/>
 
             </div>
 

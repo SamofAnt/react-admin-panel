@@ -69,7 +69,7 @@ const List = () => {
         </TableRow>
       </TableHead>
       <TableBody>
-      {rows.map((row) => (
+      {registers.map((row) => (
             <TableRow key={row.resourceId}>
               <TableCell className="tableCell">{row.resourceId}</TableCell>
               <TableCell className="tableCell">{row.versionId}</TableCell>
