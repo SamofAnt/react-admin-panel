@@ -42,7 +42,7 @@ const CircleChart = ({ title, data}) => {
   
   return (
     <div className="chart">
-       <div className="title">{title}</div> 
+       <div className="title">Общее количество статусов</div> 
           <PieChart width={400} height={400}>
               <Legend layout="vertical" verticalAlign="top" align="top" payload={
                   data.map(
