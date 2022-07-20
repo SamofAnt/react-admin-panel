@@ -12,26 +12,28 @@ import { useTranslation } from "react-i18next";
 import "../../i18n"
 import ServerService from '../../services/ServerService'
 
-export const Home = () => {
+const Home = ({url }) => {
   const { t } = useTranslation();
-  const [data, setData] = useState[[]]
+    const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    setLoading(true);
-    try {
-      ServerService.get(props.url)
-        .then((response) => {
-          setData(response.data)
-          console.log(response.data)
-          setLoading(false)
-        })
-        .catch(err => {
-          console.log(err.response)
-          setLoading(false)
-        })
-    } catch (error) {
-      console.log(error)
-    }
+    useEffect(() => {
+        if (data.length == 0) {
+            setLoading(true);
+            try {
+                ServerService.get(url)
+                    .then((response) => {
+                        setData(response.data)
+                        console.log(response.data)
+                        setLoading(false)
+                    })
+                    .catch(err => {
+                        console.log(err.response)
+                        setLoading(false)
+                    })
+            } catch (error) {
+                console.log(error)
+            }
+        }
   })
   return (
     <div className='home'>

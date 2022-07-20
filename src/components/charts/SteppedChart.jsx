@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import "../../i18n"
 import React from 'react'
 
-export const SteppedChart = () =>{
+export const SteppedChart = ({ data}) =>{
   const { t } = useTranslation();
   // const data = [
   //   {
@@ -48,7 +48,7 @@ export const SteppedChart = () =>{
         <BarChart
           width={600}
           height={400 }
-          data={props.data}
+          data={data}
           margin={{
             top: 5,
             left: 10,
