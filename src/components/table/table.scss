@@ -16,12 +16,32 @@
       padding: 5px;
       border-radius: 5px;
   
-      &.Approved {
-        color: green;
+      &.A {
+        color: #0088FE;
         background-color: rgba(0, 128, 0, 0.151);
       }
-      &.Pending {
-        color: goldenrod;
+      &.C {
+        color: #00C49F;
+        background-color: rgba(189, 189, 3, 0.103);
+      }
+      &.D {
+        color: #FFBB28;
+        background-color: rgba(189, 189, 3, 0.103);
+      }
+      &.E {
+        color: #FF0000;
+        background-color: rgba(189, 189, 3, 0.103);
+      }
+      &.L {
+        color: #FF8042;
+        background-color: rgba(189, 189, 3, 0.103);
+      }
+      &.N {
+        color: #8884d8;
+        background-color: rgba(189, 189, 3, 0.103);
+      }
+      &.P {
+        color: #00C49F;
         background-color: rgba(189, 189, 3, 0.103);
       }
     }

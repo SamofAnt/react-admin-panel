@@ -8,21 +8,25 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import SystemSourceService from '../../services/SystemSourceService';
+import ServerService from '../../services/ServerService';
 
 
 const List = () => {
-  const [sources, setSources] = useState([]);
+  const [registers, setRegisters] = useState([]);
 
   useEffect(() => {
-    getSources()
+    getRegisters()
   }, [])
   
-  const getSources = () => {
-    SystemSourceService.getSources().then((response) => {
-      setSources(response.data._embedded.sourceSystemList)
-      console.log(response.data._embedded.sourceSystemList)
-    });
-  }
+  const getRegisters = () => {
+    ServerService.get("/api/registry")
+    .then((response)=> {
+      console.log(response.data._embedded.resourceRegistryList)
+      setRegisters(response.data._embedded.resourceRegistryList)
+    })
+    .catch(err=> {
+      console.log(err.response)
+    })}
   const rows = [
     {
       id: 1143155,
@@ -49,7 +53,7 @@ const List = () => {
       customer: "Тест",
       date: "Тест",
       method: "Тест",
-      status: "Тест",
+      status: "Approved",
     },
   ];
   return (
@@ -57,16 +61,25 @@ const List = () => {
     <Table sx={{ minWidth: 650 }} aria-label="simple table">
       <TableHead>
         <TableRow>
-          <TableCell className="tableCell"> ID</TableCell>
+          <TableCell className="tableCell">ID</TableCell>
+          <TableCell className="tableCell">Версия</TableCell>
+          <TableCell className="tableCell">Доступная дата</TableCell>
+          <TableCell className="tableCell">Код задания ресурса</TableCell>
+          <TableCell className="tableCell">Статус</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
-        {sources.map((row) => (
-          <TableRow key={row.Test}>
-            <TableCell className="tableCell">{row.languageCd}</TableCell>
-          
-          </TableRow>
-        ))}
+      {rows.map((row) => (
+            <TableRow key={row.resourceId}>
+              <TableCell className="tableCell">{row.resourceId}</TableCell>
+              <TableCell className="tableCell">{row.versionId}</TableCell>
+              <TableCell className="tableCell">{row.availableDttm}</TableCell>
+              <TableCell className="tableCell">{row.processedByJobId}</TableCell>
+              <TableCell className="tableCell">
+                <span className={`status ${row.statusCd}`}>{row.statusCd}</span>
+              </TableCell>
+            </TableRow>
+          ))}
       </TableBody>
     </Table>
   </TableContainer>
