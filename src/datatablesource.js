@@ -114,3 +114,41 @@ export const registersColumns = [
   width: 250
 },
 ]
+export const resourceXColumns = [
+  {
+  field: 'resourceId',
+  headerName: 'ID',
+  width: 200
+},
+{
+  field: 'sourceTypeCd',
+  headerName: 'Код типа источника',
+  width: 230
+},
+{
+  field: 'sourceRoleCd',
+  headerName: 'Код роли источника',
+  width: 260
+},
+
+{
+  field: 'librefCd',
+  headerName: 'Код библиотеки',
+  width: 250
+},
+{
+  field: 'tableName',
+  headerName: 'Имя таблицы',
+  width: 250
+},
+{
+  field: 'fileName',
+  headerName: 'Имя файла',
+  width: 250
+},
+{
+  field: 'storedProcName',
+  headerName: 'Имя хранимой процедуры',
+  width: 250
+},
+]

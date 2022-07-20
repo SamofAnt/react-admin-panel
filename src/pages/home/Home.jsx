@@ -63,7 +63,7 @@ const Home = ({url }) => {
 
                           <SteppedChart data={statusesInDay}/>
                           <CircleChart  data={countStatuses} />
-                          <Chart title="Общее количество " aspect={2 / 1} className="chart" />
+                          <Chart  aspect={2 / 1} className="chart" />
 
 
             </div>

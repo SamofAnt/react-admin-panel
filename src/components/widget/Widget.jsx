@@ -12,12 +12,11 @@ import { useTranslation } from "react-i18next";
 import "../../i18n"
 import { Link } from "react-router-dom";
 
-const Widget = ({ type, url }) => {
+const Widget = ({ type, url, amount}) => {
   const { t } = useTranslation();
   let data;
 
   //temporary
-  const amount = 100;
   const diff = 20;
 
   switch (type) {

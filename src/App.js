@@ -16,7 +16,7 @@ import { sourceInputs, resourceInputs, groupInputs } from "./formSource";
 import React from 'react'
 import { ReactNotifications } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
-import { sourceColumns, resourcesColumns, groupsColumns, registersColumns} from "./datatablesource"
+import { sourceColumns, resourcesColumns, groupsColumns, registersColumns, resourceXColumns} from "./datatablesource"
 function App() {
   
   const {darkMode} = useContext(DarkModeContext)
@@ -46,12 +46,12 @@ function App() {
                               <Route path="new" element={<New inputs={groupInputs} titleNew="Добавить новую группу ресурсов" url="/api/resource-group" />}/>
             </Route>
             <Route path="registers" >
-              <Route index element={<List title={t("datatables.registers")} link="/registers/new" rows="registers" columns={registersColumns}/>}/>
+              <Route index element={<List title={t("datatables.registers")} link="/registers/new" list="resourceRegistryList" columns={registersColumns} url="/api/registry"/>}/>
               <Route path=":registerId" element={<Single/>}/>
               <Route path="new" element={<New/>}/>
             </Route>
             <Route path="resourcesx" >
-              <Route index element={<List title={t("datatables.resourcesx")} link="/resourcesx/new"/>}/>
+              <Route index element={<List title={t("datatables.resourcesx")} link="/resourcesx/new" list="resourceXSourceList" columns={registersColumns}/>}/>
               <Route path=":resourcexId" element={<Single/>}/>
               <Route path="new" element={<New/>}/>
             </Route>
