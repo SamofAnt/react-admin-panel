@@ -13,17 +13,10 @@ import "../../i18n"
 import React from 'react'
 
 
-const Chart = ({ title, aspect,  }) => {
+const Chart = ({ title, aspect, data }) => {
 
   const { t } = useTranslation();
-  const data = [
-    { name: t("charts.months.jan"), Total: 1200 },
-    { name: t("charts.months.feb"), Total: 2100 },
-    { name: t("charts.months.mar"), Total: 800 },
-    { name: t("charts.months.apr"), Total: 1600 },
-    { name: t("charts.months.may"), Total: 900 },
-    { name: t("charts.months.jun"), Total: 1700 },
-  ];
+
   return (
     <div className="chart">
        <div className="title"></div> 
@@ -39,12 +32,13 @@ const Chart = ({ title, aspect,  }) => {
               <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
             </linearGradient>
           </defs>
-          <XAxis dataKey="name" stroke="gray" />
+              <XAxis dataKey="optionalDate" stroke="gray" />
           <CartesianGrid strokeDasharray="3 3" className="chartGrid" />
           <Tooltip />
           <Area
             type="monotone"
-            dataKey="Total"
+                  dataKey="countOfAllStatuses"
+                  name="Count statuses"
             stroke="#8884d8"
             fillOpacity={1}
             fill="url(#total)"

@@ -17,6 +17,7 @@ const Home = ({url }) => {
     const [statusesInDay, setStatuses] = useState([]);
     const [countStatuses, setCount] = useState([]);
     const [countAll, setAll] = useState([]);
+    const [amount, setAmount] = useState([]);
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         if (statusesInDay.length === 0 || countStatuses === 0) {
@@ -41,6 +42,14 @@ const Home = ({url }) => {
                 ServerService.get("/api/all-data")
                     .then((response) => {
                         setAll(response.data)
+                        console.log(response.data)
+                    })
+                    .catch(err => {
+                        console.log(err.response)
+                    })
+                ServerService.get("/api/statuses-by-date")
+                    .then((response) => {
+                        setAmount(response.data)
                         console.log(response.data)
                     })
                     .catch(err => {
@@ -72,7 +81,7 @@ const Home = ({url }) => {
 
                           <SteppedChart data={statusesInDay}/>
                           <CircleChart  data={countStatuses} />
-                          <Chart  aspect={2 / 1} className="chart" />
+                          <Chart data={amount} aspect={2 / 1} className="chart" />
 
 
             </div>
