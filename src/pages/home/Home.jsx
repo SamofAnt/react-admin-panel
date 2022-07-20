@@ -14,27 +14,36 @@ import ServerService from '../../services/ServerService'
 
 const Home = ({url }) => {
   const { t } = useTranslation();
-    const [data, setData] = useState([]);
+    const [statusesInDay, setStatuses] = useState([]);
+    const [countStatuses, setCount] = useState([]);
   const [loading, setLoading] = useState(false);
     useEffect(() => {
-        if (data.length == 0) {
+        if (statusesInDay.length === 0 || countStatuses === 0) {
             setLoading(true);
             try {
                 ServerService.get(url)
                     .then((response) => {
-                        setData(response.data)
+                        setStatuses(response.data)
                         console.log(response.data)
-                        setLoading(false)
                     })
                     .catch(err => {
                         console.log(err.response)
-                        setLoading(false)
                     })
+                ServerService.get("/api/registry-chart-all")
+                    .then((response) => {
+                        setCount(response.data)
+                        console.log(response.data)
+                    })
+                    .catch(err => {
+                        console.log(err.response)
+                    })
+                setLoading(false)
             } catch (error) {
                 console.log(error)
             }
         }
-  })
+    })
+ 
   return (
     <div className='home'>
 
@@ -46,15 +55,15 @@ const Home = ({url }) => {
             <div className="widgets">
               <Widget type="sources" url="/sources" />
               <Widget type="resources" url="/resources" />
-              <Widget type="group" url="/group" />s
+              <Widget type="group" url="/group" />
               <Widget type="registers" url="/registers" />
 
             </div>
             <div className="charts">
 
-              <SteppedChart data={data}/>
-              <CircleChart />
-              <Chart aspect={2 / 1} className="chart" />
+                          <SteppedChart data={statusesInDay}/>
+                          <CircleChart  data={countStatuses} />
+                          <Chart title="Общее количество " aspect={2 / 1} className="chart" />
 
 
             </div>

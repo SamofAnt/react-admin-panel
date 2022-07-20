@@ -13,7 +13,7 @@ import "../../i18n"
 import React from 'react'
 
 
-const Chart = ({ aspect, title }) => {
+const Chart = ({ title, aspect,  }) => {
 
   const { t } = useTranslation();
   const data = [
@@ -26,7 +26,7 @@ const Chart = ({ aspect, title }) => {
   ];
   return (
     <div className="chart">
-      {/* <div className="title">{title}</div> */}
+       <div className="title">Common count statuses</div> 
         <AreaChart
           width={1000}
           height={400}

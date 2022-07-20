@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\datatable",
+    "\\src\\pages",
+    "\\src\\pages\\home",
+    "\\src\\pages\\list",
+    "\\src\\pages\\new",
+    "\\src\\services"
+  ],
+  "SelectedNode": "\\src\\services\\ServerService.js",
+  "PreviewInSolutionExplorer": false
+}
