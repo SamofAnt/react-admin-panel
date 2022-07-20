@@ -62,13 +62,13 @@ export const SteppedChart = ({ data, title }) => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                <Bar dataKey="countOfStatusesA" stackId="a" name="Status A" fill="#0088FE" />
-                <Bar dataKey="countOfStatusesC" stackId="a" name="Status C" fill="#00C49F" />
-                <Bar dataKey="countOfStatusesD" stackId="a" name="Status D" fill="#FFBB28" />
-                <Bar dataKey="countOfStatusesL" stackId="a" name="Status L" fill="#FF8042" />
-                <Bar dataKey="countOfStatusesN" stackId="a" name="Status N" fill="#7B68EE" />
-                <Bar dataKey="countOfStatusesP" stackId="a" name="Status P" fill="#8884d8" />
-                <Bar dataKey="countOfStatusesE" stackId="a" name="Status E" fill="#FF0000" />
+                <Bar dataKey="countOfStatusesA" stackId="a" name="Статус A" fill="#0088FE" />
+                <Bar dataKey="countOfStatusesC" stackId="a" name="Статус C" fill="#00C49F" />
+                <Bar dataKey="countOfStatusesD" stackId="a" name="Статус D" fill="#FFBB28" />
+                <Bar dataKey="countOfStatusesL" stackId="a" name="Статус L" fill="#FF8042" />
+                <Bar dataKey="countOfStatusesN" stackId="a" name="Статус N" fill="#7B68EE" />
+                <Bar dataKey="countOfStatusesP" stackId="a" name="Статус P" fill="#8884d8" />
+                <Bar dataKey="countOfStatusesE" stackId="a" name="Статус E" fill="#FF0000" />
             </BarChart>
         </div>
     );

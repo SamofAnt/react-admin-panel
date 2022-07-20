@@ -81,7 +81,7 @@ const Home = ({ url }) => {
 
 <SteppedChart data={statusesInDay} title="Статусы за последнюю неделю"/>
               <CircleChart data={countStatuses} title="Общее количество статусов"/>
-              <Chart data={amount}  aspect={2 / 1} className="chart" title="Общее количество статусов за посление 5 дней"/>
+              <Chart data={amount}  aspect={2 / 1} className="chart" title="Общее количество статусов за последние 5 дней"/>
 
             </div>
 

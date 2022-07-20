@@ -38,7 +38,7 @@ const Chart = ({ title, aspect, data }) => {
           <Area
             type="monotone"
                   dataKey="countOfAllStatuses"
-                  name="Count statuses"
+                  name="Количество статусов"
             stroke="#8884d8"
             fillOpacity={1}
             fill="url(#total)"

@@ -190,3 +190,106 @@ export const groupInputs = [
         }
     }
 ]
+
+export const resourceXInputs = [
+    {
+        id: 1,
+        label: "ID",
+        register: "resourceId",
+        type: "number",
+        placeholder: 1.0,
+        rules: {
+            required: "Поле должно быть заполнено",
+            min: {
+                value: 1,
+                message: "ID должен быть больше 0"
+            }
+        }
+    },
+    {
+        id: 2,
+        label: "Код типа источника",
+        register: "sourceTypeCd",
+        type: "text",
+        placeholder: "TABLE",
+        rules: {
+            required: "Поле должно быть заполнено",
+            maxLength: {
+                value: 10,
+                message: "Должно быть менее одиннадцати символов"
+            }
+        }
+    },
+    {
+        id: 3,
+        label: "Код роли источника",
+        register: "sourceRoleCd",
+        type: "text",
+        placeholder: "ROL",
+        rules: {
+            required: "Поле должно быть заполнено",
+            maxLength: {
+                value: 10,
+                message: "Должно быть менее одиннадцати символов"
+            }
+        }
+    },
+    {
+        id: 4,
+        label: "Код библиотеки",
+        register: "librefCd",
+        type: "text",
+        placeholder: "PR",
+        rules: {
+            required: "Поле должно быть заполнено",
+            maxLength: {
+                value: 8,
+                message: "Должно быть менее девяти символов"
+            }
+        }
+    },
+    {
+        id: 5,
+        label: "Имя таблицы",
+        register: "tableName",
+        type: "text",
+        placeholder: "PERVII",
+        rules: {
+            required: "Поле должно быть заполнено",
+            maxLength: {
+                value: 32,
+                message: "Должно быть менее 33 символов"
+            }
+        }
+    },
+    
+    {
+        id: 6,
+        label: "Имя файла",
+        register: "fileName",
+        type: "text",
+        placeholder: "File",
+        rules: {
+            required: "Поле должно быть заполнено",
+            maxLength: {
+                value: 100,
+                message: "Должно быть менее 101 символа"
+            }
+        }
+    },
+    
+    {
+        id: 7,
+        label: "Имя хранимой процедуры",
+        register: "storedProcName",
+        type: "text",
+        placeholder: "storedProcedure",
+        rules: {
+            required: "Поле должно быть заполнено",
+            maxLength: {
+                value: 100,
+                message: "Должно быть менее 101 символа"
+            }
+        }
+    }
+]
