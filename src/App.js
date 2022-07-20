@@ -28,7 +28,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
-            <Route index element={<Home/>} />
+            <Route index element={<Home url="/api/registry-chart"/>} />
             <Route path="sources" >
               <Route index element={<List title={t("datatables.sources")} link="/sources/new" list="sourceSystemList" columns={sourceColumns} url="/api/sources"/> }/>
               <Route path=":sourceId" element={<Single/>}/>
