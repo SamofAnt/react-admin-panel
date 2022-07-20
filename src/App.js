@@ -12,7 +12,7 @@ import { Suspense, useContext, useState } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { useTranslation } from "react-i18next";
 import "./i18n"
-import { sourceInputs, resourceInputs, groupInputs, resourceXInputs } from "./formSource";
+import { sourceInputs, resourceInputs, groupInputs, resourceXInputs, registersInputs } from "./formSource";
 import React from 'react'
 import { ReactNotifications } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
@@ -48,7 +48,7 @@ function App() {
             <Route path="registers" >
               <Route index element={<List title={t("datatables.registers")} link="/registers/new" list="resourceRegistryList" columns={registersColumns} url="/api/registry"/>}/>
               <Route path=":registerId" element={<Single/>}/>
-              <Route path="new" element={<New/>}/>
+              <Route path="new" element={<New inputs={registersInputs} titleNew="Добавить новый реестр" url="/api/registry"/>}/>
             </Route>
                           <Route path="resourcesx" >
                               <Route index element={<List title={t("datatables.resourcesx")} link="/resourcesx/new" list="resourceXSourceList" columns={resourceXColumns} url="/api/resource-and-source" />} />

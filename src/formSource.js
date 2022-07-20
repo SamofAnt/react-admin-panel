@@ -288,3 +288,72 @@ export const resourceXInputs = [
         }
     }
 ]
+
+export const registersInputs = [
+    {
+        id: 1,
+        label: "ID",
+        register: "resourceId",
+        type: "number",
+        placeholder: 1.0,
+        rules: {
+            required: "Поле должно быть заполнено",
+            min: {
+                value: 1,
+                message: "ID должен быть больше 0"
+            }
+        }
+    },
+    {
+        id: 2,
+        label: "Версия",
+        register: "versionId",
+        type: "number",
+        placeholder: 1.0,
+        rules: {
+            required: "Поле должно быть заполнено",
+            min: {
+                value: 1,
+                message: "ID должен быть больше 0"
+            }
+        }
+    },
+    {
+        id: 3,
+        label: "Доступная дата",
+        register: "availableDttm",
+        type: "datetime-local",
+        placeholder: 1,
+        rules: {
+            required: "Поле должно быть заполнено",
+        }
+    },
+    {
+        id: 4,
+        label: "Код задания источника",
+        register: "processedByJobId",
+        type: "number",
+        placeholder: 1.0,
+        rules: {
+            required: "Поле должно быть заполнено",
+            min: {
+                value: 1,
+                message: "ID должен быть больше 0"
+            }
+        }
+    },
+    {
+        id: 5,
+        label: "Статус",
+        register: "statusCd",
+        type: "text",
+        placeholder: "E",
+        rules: {
+            required: "Поле должно быть заполнено",
+            maxLength: {
+                value: 1,
+                message: "Должно быть менее 2 символов"
+            }
+        }
+    }
+]
