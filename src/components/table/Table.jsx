@@ -27,35 +27,7 @@ const List = () => {
     .catch(err=> {
       console.log(err.response)
     })}
-  const rows = [
-    {
-      id: 1143155,
-      product: "Тест",
-     
-      customer: "Тест",
-      date: "Тест",
-      method: "Тест",
-      status: "Тест",
-    },
-    {
-      id: 2235235,
-      product: "Тест",
-      
-      customer: "Тест",
-      date: "Тест",
-      method: "Тест",
-      status: "Тест",
-    },
-    {
-      id: 2342353,
-      product: "Тест",
-     
-      customer: "Тест",
-      date: "Тест",
-      method: "Тест",
-      status: "Approved",
-    },
-  ];
+  
   return (
     <TableContainer component={Paper} className="table">
     <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -70,7 +42,7 @@ const List = () => {
       </TableHead>
       <TableBody>
       {registers.map((row) => (
-            <TableRow key={row.resourceId}>
+            <TableRow key={row.registerId}>
               <TableCell className="tableCell">{row.resourceId}</TableCell>
               <TableCell className="tableCell">{row.versionId}</TableCell>
               <TableCell className="tableCell">{row.availableDttm}</TableCell>

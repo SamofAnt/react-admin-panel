@@ -1,15 +1,17 @@
 {
   "ExpandedNodes": [
     "",
+    "\\public",
+    "\\public\\locales",
+    "\\public\\locales\\ru",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\datatable",
+    "\\src\\components\\sidebar",
+    "\\src\\components\\table",
+    "\\src\\components\\widget",
     "\\src\\pages",
     "\\src\\pages\\home",
-    "\\src\\pages\\list",
-    "\\src\\pages\\new",
-    "\\src\\services"
+    "\\src\\pages\\list"
   ],
-  "SelectedNode": "\\src\\services\\ServerService.js",
   "PreviewInSolutionExplorer": false
 }
